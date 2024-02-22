@@ -10,10 +10,7 @@ import Alamofire
 import Combine
 
 class AuthRepository{
-    static let shared = AuthRepository()
-    
-    private init() {}
-    
+        
     func login(username: String, password: String) -> AnyPublisher<UserResponse, Error> {
            let loginUrl = EndPoints.loginUrl
            let parameters: Parameters = [

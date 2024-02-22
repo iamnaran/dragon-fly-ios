@@ -18,7 +18,7 @@ class HomeViewModel : ObservableObject{
     @Published var products: [Product] = []
 
     
-    init(homeRepository: HomeRepository = HomeRepository.shared) {
+    init(homeRepository: HomeRepository = HomeRepository()) {
         self.homeRepository = homeRepository
         getAllProducts()
     }

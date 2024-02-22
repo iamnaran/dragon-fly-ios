@@ -32,7 +32,7 @@ struct MainScreen: View {
                 .tabItem {
                     Label("Notification", systemImage: "bell")
                 }
-        }.navigationBarBackButtonHidden()
+        }
         
     }
         

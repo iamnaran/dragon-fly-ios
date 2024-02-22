@@ -18,7 +18,7 @@ class LoginViewModel: ObservableObject{
     
     private var cancellables = Set<AnyCancellable>()
         
-    init(authRepository: AuthRepository = AuthRepository.shared) {
+    init(authRepository: AuthRepository = AuthRepository()) {
         self.authRepository = authRepository
     }
     

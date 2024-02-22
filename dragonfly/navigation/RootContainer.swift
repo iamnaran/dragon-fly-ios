@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RootContainer: View {
-    @ObservedObject var appRouter = AppRouter()
+    @StateObject var appRouter = AppRouter()
 
     var body: some View {
         NavigationStack(path: $appRouter.routes) {

@@ -115,6 +115,7 @@
 		A5476EDC2B877B6D00F97C9A /* dragonfly */ = {
 			isa = PBXGroup;
 			children = (
+				A5476EDD2B877B6D00F97C9A /* dragonflyApp.swift */,
 				A5476F3C2B8782B300F97C9A /* services */,
 				A5476EEF2B877CD700F97C9A /* data */,
 				A5476EEE2B877CC800F97C9A /* utils */,
@@ -137,7 +138,6 @@
 		A5476EEB2B877C9600F97C9A /* navigation */ = {
 			isa = PBXGroup;
 			children = (
-				A5476EDD2B877B6D00F97C9A /* dragonflyApp.swift */,
 				A5476EF02B877D3400F97C9A /* AppRouter.swift */,
 				A5476EF22B877D5800F97C9A /* RootContainer.swift */,
 			);

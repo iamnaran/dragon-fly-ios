@@ -11,11 +11,7 @@ import Combine
 
 
 // Contains the possible destinations in our Router
-enum Route: Hashable, Identifiable {
-    var id: Self {
-        return self
-    }
-    
+enum Route: Hashable {
     case login
     case main
     case product(String)

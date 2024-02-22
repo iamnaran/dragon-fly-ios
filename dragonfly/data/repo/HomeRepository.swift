@@ -11,10 +11,7 @@ import Alamofire
 import Combine
 
 class HomeRepository{
-    static let shared = HomeRepository()
-    
-    private init() {}
-    
+        
     func getAllProducts() -> AnyPublisher<ProductResponse, Error> {
         let loginUrl = EndPoints.productsUrl
            return NetworkManager.shared.fetchData(url: loginUrl,
