@@ -7,26 +7,30 @@
 
 
 import SwiftUI
+import Foundation
+import RealmSwift
 
 struct HomeScreen: View {
     
     @StateObject private var viewModel = HomeViewModel()
     
     @EnvironmentObject private var appNavigator: AppNavigator
+    
+    @ObservedResults(ProductEntity.self) var productEntities
 
     
     var body: some View {
         
-            List(viewModel.products) { product in
+        List(productEntities) { product in
                 
-                ProductRowView(product: product){ productId in
-                    
-                    appNavigator.navigateTo(route: .product(productId))
-                    
-                }.listRowSeparator(.hidden)
+            ProductRowView(product: product){ productId in
                 
-            }
-            .listStyle(.inset)
+                appNavigator.navigateTo(route: .product(productId))
+                
+            }.listRowSeparator(.hidden)
+                
+        }
+        .listStyle(.inset)
           
     }
 }

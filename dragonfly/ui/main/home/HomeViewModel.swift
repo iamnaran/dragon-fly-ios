@@ -7,19 +7,24 @@
 
 import Foundation
 import Combine
+import RealmSwift
 
 class HomeViewModel : ObservableObject{
  
     private let homeRepository: HomeRepository
+    private let dbManager: DBManager
+    
+    @Published var productResults: Results<ProductEntity>?
+    
     private var cancellables = Set<AnyCancellable>()
     
     @Published var isLoading: Bool = false
     @Published var error: Error?
-    @Published var products: [Product] = []
 
     
     init(homeRepository: HomeRepository = HomeRepository()) {
         self.homeRepository = homeRepository
+        self.dbManager = DBManager.shared
         getAllProducts()
     }
     
@@ -36,8 +41,10 @@ class HomeViewModel : ObservableObject{
                     self?.error = error
                 }
             }, receiveValue: { [weak self] allProducts in
+                
+                let listOfProducts = ProductMapper.productListToEntityList(allProducts.products)
+                self?.dbManager.insertAll(objects: listOfProducts)
                 self?.isLoading = false
-                self?.products = allProducts.products
             })
             .store(in: &cancellables)
     }

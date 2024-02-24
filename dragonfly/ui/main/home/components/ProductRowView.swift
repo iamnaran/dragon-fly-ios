@@ -9,7 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct ProductRowView: View {
-    let product: Product
+    let product: ProductEntity
     let onItemClick: (String) -> Void // Closure to handle tap
 
     
@@ -22,11 +22,12 @@ struct ProductRowView: View {
                         .aspectRatio(contentMode: .fill)
                         .frame(height: 200)
                         .clipped()
-                }
-                .background(Color.white)
-                .aspectRatio(contentMode: .fit)
-                .frame(width: .infinity, height: 200)
-                .clipped()
+                }.background(Color.white)
+                 .aspectRatio(contentMode: .fit)
+                 .frame(
+                    width: abs(UIScreen.main.bounds.width - 30),
+                    height: 200)
+                 .clipped()
 
             VStack(alignment: .leading) {
                 // Product Title
@@ -68,7 +69,7 @@ struct ProductRowView: View {
 
 struct ProductView_Previews: PreviewProvider {
     static var previews: some View {
-        let sampleProduct = Product(id: 1, title: "Sample Product", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at orci ultrices, feugiat ligula non, posuere nisi.", price: 99, discountPercentage: 0.0, rating: 4.5, stock: 100, brand: "Brand", category: "Category", thumbnail: "sample_thumbnail", images: ["sample_image1", "sample_image2"])
+        let sampleProduct = ProductEntity()
         
         ProductRowView(product: sampleProduct){ productId in
             

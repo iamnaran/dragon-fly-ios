@@ -6,12 +6,16 @@
 //
 
 import Foundation
-import Foundation
 import Alamofire
 import Combine
+import RealmSwift
+import SwiftUI
 
-class HomeRepository{
-        
+class HomeRepository {
+    
+    private let dbManager = DBManager.shared
+    
+    
     func getAllProducts() -> AnyPublisher<ProductResponse, Error> {
         let loginUrl = EndPoints.productsUrl
            return NetworkManager.shared.fetchData(url: loginUrl,
@@ -19,6 +23,8 @@ class HomeRepository{
                                                    parameters: nil,
                                                    responseType: ProductResponse.self)
     }
+    
+    
     
     
 }
