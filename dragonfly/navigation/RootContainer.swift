@@ -8,14 +8,18 @@
 import SwiftUI
 
 struct RootContainer: View {
-    @StateObject var appRouter = AppRouter()
+    
+    @StateObject var appNavigator = AppNavigator()
+    
 
     var body: some View {
-        NavigationStack(path: $appRouter.routes) {
-            LoginScreen()
-                .environmentObject(appRouter)
-                .navigationDestination(for: Route.self) { path in
-                    path.screen.environmentObject(appRouter)
+        NavigationStack(path: $appNavigator.routes) {
+            appNavigator
+                .rootScreen()
+                .environmentObject(appNavigator)
+                .navigationDestination(for: Route.self) { route in
+                    appNavigator.getAppScreen(route)
+                        .environmentObject(appNavigator)
                 }
             }
     }

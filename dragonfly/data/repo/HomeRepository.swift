@@ -18,7 +18,7 @@ class HomeRepository{
                                                    method: .get,
                                                    parameters: nil,
                                                    responseType: ProductResponse.self)
-       }
+    }
     
     
 }

@@ -11,13 +11,12 @@ import SwiftUI
 
 struct MainScreen: View {
     
-    
-    
     @ObservedObject private var viewModel = MainViewModel()
 
     var body: some View {
         
         TabView {
+            
             HomeScreen()
                 .badge(2)
                 .tabItem {
@@ -32,7 +31,7 @@ struct MainScreen: View {
                 .tabItem {
                     Label("Notification", systemImage: "bell")
                 }
-        }
+        }.navigationBarBackButtonHidden()
         
     }
         

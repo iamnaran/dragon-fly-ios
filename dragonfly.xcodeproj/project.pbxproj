@@ -10,7 +10,6 @@
 		A5476EDE2B877B6D00F97C9A /* dragonflyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5476EDD2B877B6D00F97C9A /* dragonflyApp.swift */; };
 		A5476EE22B877B7100F97C9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5476EE12B877B7100F97C9A /* Assets.xcassets */; };
 		A5476EE52B877B7100F97C9A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5476EE42B877B7100F97C9A /* Preview Assets.xcassets */; };
-		A5476EF12B877D3400F97C9A /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5476EF02B877D3400F97C9A /* AppRouter.swift */; };
 		A5476EF32B877D5800F97C9A /* RootContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5476EF22B877D5800F97C9A /* RootContainer.swift */; };
 		A5476EF92B877DC200F97C9A /* AppComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5476EF82B877DC200F97C9A /* AppComponents.swift */; };
 		A5476EFB2B877DFA00F97C9A /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5476EFA2B877DFA00F97C9A /* SplashScreen.storyboard */; };
@@ -43,6 +42,7 @@
 		A5476F442B8782FC00F97C9A /* AppStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5476F432B8782FC00F97C9A /* AppStorageManager.swift */; };
 		A5476F472B87838600F97C9A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A5476F462B87838600F97C9A /* Alamofire */; };
 		A5476F4A2B87839700F97C9A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A5476F492B87839700F97C9A /* Kingfisher */; };
+		A5F8CEAD2B89D1AA007252C0 /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8CEAC2B89D1AA007252C0 /* AppNavigator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,7 +50,6 @@
 		A5476EDD2B877B6D00F97C9A /* dragonflyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dragonflyApp.swift; sourceTree = "<group>"; };
 		A5476EE12B877B7100F97C9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5476EE42B877B7100F97C9A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A5476EF02B877D3400F97C9A /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		A5476EF22B877D5800F97C9A /* RootContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootContainer.swift; sourceTree = "<group>"; };
 		A5476EF82B877DC200F97C9A /* AppComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComponents.swift; sourceTree = "<group>"; };
 		A5476EFA2B877DFA00F97C9A /* SplashScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashScreen.storyboard; sourceTree = "<group>"; };
@@ -81,6 +80,7 @@
 		A5476F3F2B8782E200F97C9A /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
 		A5476F412B8782EE00F97C9A /* NetworkManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManger.swift; sourceTree = "<group>"; };
 		A5476F432B8782FC00F97C9A /* AppStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageManager.swift; sourceTree = "<group>"; };
+		A5F8CEAC2B89D1AA007252C0 /* AppNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,8 +138,8 @@
 		A5476EEB2B877C9600F97C9A /* navigation */ = {
 			isa = PBXGroup;
 			children = (
-				A5476EF02B877D3400F97C9A /* AppRouter.swift */,
 				A5476EF22B877D5800F97C9A /* RootContainer.swift */,
+				A5F8CEAC2B89D1AA007252C0 /* AppNavigator.swift */,
 			);
 			path = navigation;
 			sourceTree = "<group>";
@@ -393,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5476F422B8782EE00F97C9A /* NetworkManger.swift in Sources */,
+				A5F8CEAD2B89D1AA007252C0 /* AppNavigator.swift in Sources */,
 				A5476EFF2B877ED600F97C9A /* MainViewModel.swift in Sources */,
 				A5476F272B87819100F97C9A /* AppImages.swift in Sources */,
 				A5476EFD2B877EC800F97C9A /* MainScreen.swift in Sources */,
@@ -410,7 +411,6 @@
 				A5476F332B87824B00F97C9A /* HomeRepository.swift in Sources */,
 				A5476F442B8782FC00F97C9A /* AppStorageManager.swift in Sources */,
 				A5476EDE2B877B6D00F97C9A /* dragonflyApp.swift in Sources */,
-				A5476EF12B877D3400F97C9A /* AppRouter.swift in Sources */,
 				A5476F2F2B87820E00F97C9A /* UserResponse.swift in Sources */,
 				A5476F402B8782E200F97C9A /* EndPoints.swift in Sources */,
 				A5476F172B877F9500F97C9A /* HomeScreen.swift in Sources */,

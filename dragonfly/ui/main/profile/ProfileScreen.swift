@@ -14,9 +14,7 @@ struct ProfileScreen: View {
 
     
     var body: some View {
-        
-        NavigationStack{
-            
+                    
             VStack {
                 Text("Welcome to Profile Screen")
                     .font(.title)
@@ -27,7 +25,6 @@ struct ProfileScreen: View {
                 
             }.toolbar(.hidden)
             
-        }
     }
 }
 

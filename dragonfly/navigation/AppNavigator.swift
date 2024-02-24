@@ -16,11 +16,32 @@ enum Route: Hashable {
     case main
     case product(String)
     
+}
+
+class AppNavigator : ObservableObject {
     
-    // Builds the views
+    @Published var routes: [Route] = []
+        
+    let appStorage = AppStorageManager.shared
+
+    var isLoggedIn: Bool {
+        appStorage.isUserLoggedIn()
+    }
+    
     @ViewBuilder
-    var screen: some View {
-        switch self {
+    func rootScreen() -> some View{
+        if(isLoggedIn){
+            LoginScreen()
+        }else{
+            MainScreen()
+        }
+        
+    }
+    
+// MARK: - Builds views for screen
+    @ViewBuilder
+    func getAppScreen(_ route: Route) -> some View {
+        switch route {
         case .login:
             LoginScreen()
         case .main:
@@ -31,15 +52,8 @@ enum Route: Hashable {
         }
     }
     
-}
-
-
-final class AppRouter : ObservableObject {
+// MARK: - Used by views to navigate to another view
     
-    @Published var routes: [Route] = []
-
-    
-    // Used by views to navigate to another view
     func navigateTo(route: Route) {
         routes.append(route)
     }

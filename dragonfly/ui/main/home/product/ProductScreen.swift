@@ -13,7 +13,6 @@ struct ProductScreen: View {
     let productId: String
     
     @ObservedObject private var viewModel = ProductViewModel()
-
     
     var body: some View {
         

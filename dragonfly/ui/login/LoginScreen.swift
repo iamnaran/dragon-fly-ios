@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginScreen: View {
     
-    @EnvironmentObject private var navigationRouter: AppRouter
+    @EnvironmentObject private var navigationRouter: AppNavigator
 
     @ObservedObject private var viewModel = LoginViewModel()
     @State private var loginState = LoginViewState()

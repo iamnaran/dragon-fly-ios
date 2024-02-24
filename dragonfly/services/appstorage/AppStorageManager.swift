@@ -8,11 +8,12 @@
 import Foundation
 
 enum AppStorageKeys : String{
-    case isLoggedIn,userId
+    case isLoggedIn,userId, userToken
     
 }
 
 final class AppStorageManager {
+    
     static let shared = AppStorageManager()
     
     private init() {}
@@ -44,6 +45,17 @@ final class AppStorageManager {
        
     func setUserLoggedIn(_ status: Bool) {
         setValue(status, forKey: .isLoggedIn)
+    }
+    
+    
+    // Token of Logged In User
+    
+    func getLoggedInUserToken() -> String {
+        getValue(.userToken, defaultValue: "none")
+    }
+       
+    func setLoggedInUserToken(_ token: String) {
+        setValue(token, forKey: .userToken)
     }
     
     

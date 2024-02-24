@@ -14,9 +14,7 @@ struct NotificationScreen: View {
     @ObservedObject private var viewModel = NotificationViewModel()
 
     var body: some View {
-        
-        NavigationStack{
-            
+                    
             VStack {
                 Text("Welcome to Notification Screen")
                     .font(.title)
@@ -26,8 +24,7 @@ struct NotificationScreen: View {
                     .padding()
                 
             }.toolbar(.hidden)
-            
-        }
+
     }
 }
 
