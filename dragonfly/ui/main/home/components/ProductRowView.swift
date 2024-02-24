@@ -42,7 +42,7 @@ struct ProductRowView: View {
                         trailing: 0))
 
                 // Product Description
-                Text(product.description)
+                Text(product.descriptionText)
                     .font(.body)
                     .foregroundColor(.secondary)
                     .lineLimit(2)

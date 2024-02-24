@@ -5,28 +5,24 @@ import Foundation
 class DBManager {
     static let shared = DBManager()
 
-    private var cancellables = Set<AnyCancellable>()
     private var realm: Realm?
 
     private init() {
-        // Open the Realm asynchronously
-        Realm.asyncOpen(configuration: Realm.Configuration()) { result in
-            switch result {
-            case .success(let realm):
-                self.realm = realm
-            case .failure(let error):
-                // Handle error
-                print("Failed to open Realm: \(error)")
-            }
+        // Open the Realm synchronously on the main thread
+        do {
+            realm = try Realm()
+        } catch {
+            // Handle error
+            print("Failed to open Realm: \(error)")
         }
     }
 
     func add<T: Object>(object: T) {
-        guard let realm = realm else {
-            print("Realm not initialized.")
-            return
-        }
-        DispatchQueue(label: "realm-background").async {
+        DispatchQueue.main.async {
+            guard let realm = self.realm else {
+                print("Realm not initialized.")
+                return
+            }
             do {
                 try realm.write {
                     realm.add(object)
@@ -38,11 +34,11 @@ class DBManager {
     }
 
     func delete<T: Object>(object: T) {
-        guard let realm = realm else {
-            print("Realm not initialized.")
-            return
-        }
-        DispatchQueue(label: "realm-background").async {
+        DispatchQueue.main.async {
+            guard let realm = self.realm else {
+                print("Realm not initialized.")
+                return
+            }
             do {
                 try realm.write {
                     realm.delete(object)
@@ -54,11 +50,11 @@ class DBManager {
     }
 
     func insertAll<T: Object>(objects: [T]) {
-        guard let realm = realm else {
-            print("Realm not initialized.")
-            return
-        }
-        DispatchQueue(label: "realm-background").async {
+        DispatchQueue.main.async {
+            guard let realm = self.realm else {
+                print("Realm not initialized.")
+                return
+            }
             do {
                 try realm.write {
                     realm.add(objects)
