@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginScreen: View {
     
-    @EnvironmentObject private var navigationRouter: AppNavigator
+    @EnvironmentObject private var appNavigator: AppNavigator
 
     @ObservedObject private var viewModel = LoginViewModel()
     @State private var loginState = LoginViewState()
@@ -85,7 +85,7 @@ struct LoginScreen: View {
         .background(Color.white)
         .onReceive(viewModel.$isAuthenticated) { isAuthenticated in
             if isAuthenticated{
-                navigationRouter.navigateTo(route: .main)
+                appNavigator.navigateTo(route: .main)
             }
         }
         .onAppear {

@@ -12,6 +12,9 @@ import SwiftUI
 struct MainScreen: View {
     
     @ObservedObject private var viewModel = MainViewModel()
+    
+    @EnvironmentObject private var appNavigator: AppNavigator
+
 
     var body: some View {
         
@@ -21,17 +24,20 @@ struct MainScreen: View {
                 .badge(2)
                 .tabItem {
                     Label("Home", systemImage: "house")
-                }
+                }.environmentObject(appNavigator)
             ProfileScreen()
                 .tabItem {
                     Label("Profile", systemImage: "person")
-                }
+                }.environmentObject(appNavigator)
             NotificationScreen()
                 .badge("!")
                 .tabItem {
                     Label("Notification", systemImage: "bell")
-                }
-        }.navigationBarBackButtonHidden()
+                }.environmentObject(appNavigator)
+        }
+        .navigationBarHidden(true)
+        .padding(.top, 0)
+
         
     }
         

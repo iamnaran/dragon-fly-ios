@@ -16,17 +16,13 @@ struct ProductScreen: View {
     
     var body: some View {
         
-        NavigationStack{
-            
-            VStack {
-                Text("Welcome to Product Screen")
-                    .font(.title)
-                    .foregroundColor(.black)
-                    .padding()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .padding()
-                
-            }.toolbar(.hidden)
+        VStack {
+            Text("Product Id "+productId)
+                .font(.title)
+                .foregroundColor(.black)
+                .padding()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .padding()
             
         }
     }

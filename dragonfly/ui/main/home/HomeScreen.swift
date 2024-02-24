@@ -11,19 +11,22 @@ import SwiftUI
 struct HomeScreen: View {
     
     @StateObject private var viewModel = HomeViewModel()
+    
+    @EnvironmentObject private var appNavigator: AppNavigator
 
+    
     var body: some View {
         
             List(viewModel.products) { product in
                 
-                ProductRowView(product: product)
-                    .listRowSeparator(.hidden)
-                    .contentShape(Rectangle())
+                ProductRowView(product: product){ productId in
+                    
+                    appNavigator.navigateTo(route: .product(productId))
+                    
+                }.listRowSeparator(.hidden)
                 
             }
-            .listStyle(DefaultListStyle())
-            .listRowSeparator(.hidden)
-            .padding(8)
+            .listStyle(.inset)
           
     }
 }

@@ -9,7 +9,8 @@ import Foundation
 import SwiftUI
 
 enum AppImage: String{
-    case appLogo = "fireflylogo", home
+    case appLogo = "fireflylogo"
+    case placeholder = "placeholder"
 }
 
 extension Image{
