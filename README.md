@@ -14,7 +14,7 @@ Dragonfly is an iOS app built with SwiftUI, following the MVVM (Model-View-ViewM
 
 ## Clone of Android App
 
-[Dragonfly](https://github.com/iamnaran/firefly-compose) is a clone app inspired by Firefly, featuring similar features and a specific folder structure and coding conventions.
+[Firefly](https://github.com/iamnaran/firefly-compose) is an android clone app, featuring similar features and a specific folder structure and coding conventions.
 - Jetpack Compose UI
 - MVVM 
 - Retrofit - Network Library
