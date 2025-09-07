@@ -48,6 +48,8 @@
 		A560BBE32B8A191F000F1D89 /* ProductEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A560BBE22B8A191F000F1D89 /* ProductEntity.swift */; };
 		A560BBE62B8A1A93000F1D89 /* ProductMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A560BBE52B8A1A93000F1D89 /* ProductMapper.swift */; };
 		A5F8CEAD2B89D1AA007252C0 /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8CEAC2B89D1AA007252C0 /* AppNavigator.swift */; };
+		F40132C52E6DF87A00559C5A /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40132C42E6DF87400559C5A /* APIError.swift */; };
+		F40132C72E6E02A500559C5A /* UIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40132C62E6E029F00559C5A /* UIUtils.swift */; };
 		F483026A2E6B436F00AD2FAF /* LearningScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48302692E6B436500AD2FAF /* LearningScreen.swift */; };
 		F483026C2E6B439700AD2FAF /* LearningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F483026B2E6B439200AD2FAF /* LearningViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -92,6 +94,8 @@
 		A560BBE22B8A191F000F1D89 /* ProductEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductEntity.swift; sourceTree = "<group>"; };
 		A560BBE52B8A1A93000F1D89 /* ProductMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductMapper.swift; sourceTree = "<group>"; };
 		A5F8CEAC2B89D1AA007252C0 /* AppNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
+		F40132C42E6DF87400559C5A /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		F40132C62E6E029F00559C5A /* UIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUtils.swift; sourceTree = "<group>"; };
 		F48302692E6B436500AD2FAF /* LearningScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningScreen.swift; sourceTree = "<group>"; };
 		F483026B2E6B439200AD2FAF /* LearningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,6 +177,7 @@
 		A5476EEE2B877CC800F97C9A /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				F40132C62E6E029F00559C5A /* UIUtils.swift */,
 				A5476F242B87818500F97C9A /* AppIcons.swift */,
 				A5476F262B87819100F97C9A /* AppImages.swift */,
 				A5476F282B87819C00F97C9A /* CommonUtils.swift */,
@@ -315,6 +320,7 @@
 		A5476F3E2B8782CE00F97C9A /* network */ = {
 			isa = PBXGroup;
 			children = (
+				F40132C42E6DF87400559C5A /* APIError.swift */,
 				A5476F3F2B8782E200F97C9A /* EndPoints.swift */,
 				A5476F412B8782EE00F97C9A /* NetworkManger.swift */,
 			);
@@ -398,7 +404,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1640;
 				TargetAttributes = {
 					A5476ED92B877B6D00F97C9A = {
 						CreatedOnToolsVersion = 14.2;
@@ -458,6 +464,7 @@
 				A560BBE32B8A191F000F1D89 /* ProductEntity.swift in Sources */,
 				A5476F292B87819C00F97C9A /* CommonUtils.swift in Sources */,
 				A5476F2D2B87820100F97C9A /* ProductResponse.swift in Sources */,
+				F40132C72E6E02A500559C5A /* UIUtils.swift in Sources */,
 				A560BBD42B8A1236000F1D89 /* DBManager.swift in Sources */,
 				A5476F0B2B877F4300F97C9A /* ProfileScreen.swift in Sources */,
 				A5476F092B877F3400F97C9A /* ProfileViewModel.swift in Sources */,
@@ -473,6 +480,7 @@
 				A5476F402B8782E200F97C9A /* EndPoints.swift in Sources */,
 				A5476F172B877F9500F97C9A /* HomeScreen.swift in Sources */,
 				A5476F1A2B87802800F97C9A /* ProductRowView.swift in Sources */,
+				F40132C52E6DF87A00559C5A /* APIError.swift in Sources */,
 				A5476F0D2B877F5100F97C9A /* NotificationScreen.swift in Sources */,
 				A5476F032B877EF500F97C9A /* LoginViewModel.swift in Sources */,
 				F483026C2E6B439700AD2FAF /* LearningViewModel.swift in Sources */,
@@ -523,8 +531,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = TEMN6JY2VC;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -583,8 +593,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = TEMN6JY2VC;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -611,7 +623,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"dragonfly/Preview Content\"";
-				DEVELOPMENT_TEAM = TEMN6JY2VC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Dragonfly;
@@ -642,7 +653,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"dragonfly/Preview Content\"";
-				DEVELOPMENT_TEAM = TEMN6JY2VC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Dragonfly;

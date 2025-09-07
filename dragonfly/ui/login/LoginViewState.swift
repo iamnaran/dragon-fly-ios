@@ -10,4 +10,7 @@ import Foundation
 struct LoginViewState{
     var username: String = "emilys"
     var password: String = "emilyspass"
+    var isLoading: Bool = false
+    var isAuthenticated: Bool = false
+    var error: String? = nil
 }

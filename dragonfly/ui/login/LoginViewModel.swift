@@ -13,32 +13,54 @@ class LoginViewModel: ObservableObject{
     
     private let authRepository: AuthRepository
     
-    @Published var isAuthenticated: Bool = false
-    @Published var error: Error?
-    
+    @Published private(set) var state = LoginViewState()
+
     private var cancellables = Set<AnyCancellable>()
         
     init(authRepository: AuthRepository = AuthRepository()) {
         self.authRepository = authRepository
     }
     
-    func login(with loginState: LoginViewState) {
-        self.isAuthenticated = true
-        authRepository.login(username: loginState.username, password: loginState.password)
+    func login() {
+        state.isLoading = true
+        state.error = nil
+        authRepository.login(username: state.username, password: state.password)
             .sink(receiveCompletion: { [weak self] completion in
-                switch completion {
-                case .finished:
-                    print("Finished")
-                    break
-                case .failure(let error):
-                    self?.error = error
+                DispatchQueue.main.async {
+                                self?.state.isLoading = false
+                                if case let .failure(error) = completion {
+                                    self?.state.error = error.localizedDescription
+                                }
                 }
             }, receiveValue: { [weak self] user in
-                AppStorageManager.shared.setUserLoggedIn(true)
-                AppStorageManager.shared.setLoggedInUserToken(user.accessToken)
-                self?.isAuthenticated = true
+                DispatchQueue.main.async {
+                               self?.state.isAuthenticated = true
+                               AppStorageManager.shared.setLoggedInUser(user)
+            }
             })
             .store(in: &cancellables)
     }
+    
+    func updateUsername(_ username: String) {
+        state = LoginViewState(
+            username: username,
+            password: state.password,
+            isLoading: state.isLoading,
+            isAuthenticated: state.isAuthenticated,
+            error: state.error
+        )
+    }
+
+    func updatePassword(_ password: String) {
+        state = LoginViewState(
+            username: state.username,
+            password: password,
+            isLoading: state.isLoading,
+            isAuthenticated: state.isAuthenticated,
+            error: state.error
+        )
+    }
+    
+    
     
 }

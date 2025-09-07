@@ -10,7 +10,7 @@ import Foundation
 class ProductMapper {
     
     static func productFromEntity(_ entity: ProductEntity) -> Product {
-        return Product(id: Int(entity.id) ?? 0,
+        return Product(id: entity.id,
                        title: entity.title,
                        description: entity.descriptionText,
                        price: entity.price,
@@ -25,7 +25,7 @@ class ProductMapper {
 
     static func productToEntity(_ product: Product) -> ProductEntity {
         let entity = ProductEntity()
-        entity.id = String(entity.id)
+        entity.id = product.id
         entity.title = product.title
         entity.descriptionText = product.description
         entity.price = product.price

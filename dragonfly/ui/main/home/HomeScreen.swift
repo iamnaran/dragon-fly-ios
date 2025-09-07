@@ -43,15 +43,10 @@ struct HomeScreen: View {
                     EmptyView()
                 }
             }
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text("Today")
-                        .font(.largeTitle.bold())
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-            }
+            .navigationTitle("Home")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(.ultraThinMaterial, for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)       
+            .toolbarBackground(.visible, for: .navigationBar)
         }
     }
 }

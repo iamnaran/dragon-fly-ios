@@ -24,7 +24,10 @@ struct NotificationScreen: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .padding()
                 
-            }.toolbar(.hidden)
+            }.navigationTitle("Notification")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(.ultraThinMaterial, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
 
     }
 }

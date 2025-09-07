@@ -1,62 +1,64 @@
-//
-//  AppStorageManager.swift
-//  firefly
-//
-//  Created by Na Ran on 22/02/2024.
-//
-
 import Foundation
 
-enum AppStorageKeys : String{
-    case isLoggedIn,userId, userToken
-    
+enum AppStorageKeys: String {
+    case isLoggedIn, loggedInUser
 }
 
 final class AppStorageManager {
     
     static let shared = AppStorageManager()
+    private let defaults = UserDefaults.standard
     
     private init() {}
     
+    // MARK: - Generic Get/Set
     func getValue<T>(_ key: AppStorageKeys, defaultValue: T) -> T {
-        UserDefaults.standard.object(forKey: key.rawValue) as? T ?? defaultValue
+        defaults.object(forKey: key.rawValue) as? T ?? defaultValue
     }
-        
+    
     func setValue<T>(_ value: T, forKey key: AppStorageKeys) {
-        UserDefaults.standard.set(value, forKey: key.rawValue)
-    }
-    
-    // LoggedInUser Getter Setter
-    
-    func getLoggedInUserId() -> String {
-        getValue(AppStorageKeys.userId, defaultValue: "none")
-    }
-    
-    func setLoggedInUserId(_ userId: String) {
-        setValue(userId, forKey: AppStorageKeys.userId)
+        defaults.set(value, forKey: key.rawValue)
     }
     
     
-    // Is User Logged In Getter Setter
-    
-    func isUserLoggedIn() -> Bool {
-        getValue(.isLoggedIn, defaultValue: false)
-    }
-       
-    func setUserLoggedIn(_ status: Bool) {
-        setValue(status, forKey: .isLoggedIn)
+    // MARK: - User Login Status
+    var isUserLoggedIn: Bool {
+        get { getValue(.isLoggedIn, defaultValue: false) }
+        set { setValue(newValue, forKey: .isLoggedIn) }
     }
     
-    
-    // Token of Logged In User
-    
-    func getLoggedInUserToken() -> String {
-        getValue(.userToken, defaultValue: "none")
+    var loggedInUserId: String {
+          get { getLoggedInUser()?.id.description ?? "" }
     }
-       
-    func setLoggedInUserToken(_ token: String) {
-        setValue(token, forKey: .userToken)
+      
+    var loggedInUserToken: String {
+          get { getLoggedInUser()?.accessToken ?? "" }
     }
     
+    // MARK: - Logged In User Object
+    func setLoggedInUser(_ user: UserResponse) {
+        do {
+            let data = try JSONEncoder().encode(user)
+            defaults.set(data, forKey: AppStorageKeys.loggedInUser.rawValue)
+            defaults.set(true, forKey: AppStorageKeys.isLoggedIn.rawValue)
+        } catch {
+            print("Failed to encode user: \(error)")
+        }
+    }
     
+    func getLoggedInUser() -> UserResponse? {
+        guard let data = defaults.data(forKey: AppStorageKeys.loggedInUser.rawValue) else { return nil }
+        do {
+            return try JSONDecoder().decode(UserResponse.self, from: data)
+        } catch {
+            print("Failed to decode user: \(error)")
+            return nil
+        }
+    }
+    
+    func clearLoggedInUser() {
+        defaults.removeObject(forKey: AppStorageKeys.loggedInUser.rawValue)
+        defaults.set(false, forKey: AppStorageKeys.isLoggedIn.rawValue)
+        isUserLoggedIn = false
+    }
 }

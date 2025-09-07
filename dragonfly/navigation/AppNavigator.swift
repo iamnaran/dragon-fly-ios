@@ -16,7 +16,7 @@ class AppNavigator: ObservableObject {
     let appStorage = AppStorageManager.shared
 
     var isLoggedIn: Bool {
-        appStorage.isUserLoggedIn()
+        appStorage.isUserLoggedIn
     }
 
     // MARK: - Root screen decides login/main

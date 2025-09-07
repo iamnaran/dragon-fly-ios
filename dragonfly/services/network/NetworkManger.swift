@@ -37,9 +37,12 @@ class NetworkManager {
                        headers: headers)
                 .validate(statusCode: 200...500)
                 .responseDecodable(of: T.self) { response in
-                    let statusCode = response.response?.statusCode ?? 0
-                    if let data = response.data {
-                        print("HTTP \(statusCode) response:", String(data: data, encoding: .utf8) ?? "nil")
+                    if let data = response.data, let code = response.response?.statusCode, code >= 400 {
+                                  // try to parse API error message
+                                  if let apiError = try? JSONDecoder().decode(APIError.self, from: data) {
+                                      promise(.failure(apiError))
+                                      return
+                                  }
                     }
                     
                     switch response.result {

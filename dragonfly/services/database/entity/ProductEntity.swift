@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 class ProductEntity: Object, Identifiable {
-    @objc dynamic var id: String = UUID().uuidString
+    @objc dynamic var id: Int = 0
     @objc dynamic var title: String = ""
     @objc dynamic var descriptionText: String = ""
     @objc dynamic var price: Double = 0.0

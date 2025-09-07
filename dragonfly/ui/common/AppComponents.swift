@@ -27,7 +27,9 @@ struct AppButton: View {
                     .font(.system(size: 18, weight: .bold))
                     .foregroundColor(Color.white)
                 
-                }.onTapGesture {
+                }.padding(.horizontal, 16)
+                .padding(.vertical, 4)
+                .onTapGesture {
                     config.action()
                 }
     }

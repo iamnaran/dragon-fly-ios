@@ -18,7 +18,7 @@ class HomeRepository {
     
     func getAllProducts() -> AnyPublisher<ProductResponse, Error> {
         let loginUrl = EndPoints.productsUrl
-        let accessToken = AppStorageManager.shared.getLoggedInUserToken()
+        let accessToken = AppStorageManager.shared.loggedInUserToken
         var allHeaders: HTTPHeaders = HTTPHeaders()
         allHeaders.add(name: "Authorization", value: "Bearer \(accessToken)")
            

@@ -50,7 +50,7 @@ class HomeViewModel : ObservableObject{
                 let listOfProducts = ProductMapper.productListToEntityList(allProducts.products)
                 
                 // Save to DB
-                self?.dbManager.insertAll(objects: listOfProducts)
+                self?.dbManager.insertAll(listOfProducts)
                 
                 // Update UI
                 self?.products = listOfProducts
