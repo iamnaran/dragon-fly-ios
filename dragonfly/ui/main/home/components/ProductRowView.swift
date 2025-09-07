@@ -10,7 +10,7 @@ import Kingfisher
 
 struct ProductRowView: View {
     let product: ProductEntity
-    let onItemClick: (String) -> Void // Closure to handle tap
+    let onItemClick: (String) -> Void
 
     
     var body: some View {
@@ -22,8 +22,8 @@ struct ProductRowView: View {
                         .aspectRatio(contentMode: .fill)
                         .frame(height: 200)
                         .clipped()
-                }.background(Color.white)
-                 .aspectRatio(contentMode: .fit)
+                }
+                .aspectRatio(contentMode: .fill)
                  .frame(
                     width: abs(UIScreen.main.bounds.width - 30),
                     height: 200)
@@ -56,7 +56,6 @@ struct ProductRowView: View {
             
         }
         .frame(width:  UIScreen.main.bounds.width - 30)
-        .shadow(radius: 1)
         .onTapGesture {
             onItemClick(product.title)
         }
@@ -64,15 +63,11 @@ struct ProductRowView: View {
     }
 }
 
-struct ProductView_Previews: PreviewProvider {
-    static var previews: some View {
-        let sampleProduct = ProductEntity()
-        
-        ProductRowView(product: sampleProduct){ productId in
-            
-            
-        }
-            .previewLayout(.sizeThatFits)
-            .padding()
+
+#Preview {
+    ProductRowView(product: ProductEntity()) { title in
+        print("Tapped: \(title)")
     }
 }
+
+

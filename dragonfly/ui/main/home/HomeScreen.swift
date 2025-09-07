@@ -12,33 +12,46 @@ import RealmSwift
 
 struct HomeScreen: View {
     @Binding var homePath: NavigationPath
-    
     @ObservedObject private var viewModel = HomeViewModel()
-    
     @EnvironmentObject private var appNavigator: AppNavigator
-    
+
     var body: some View {
-        List(viewModel.products) { product in
-            ProductRowView(product: product) { productId in
-                homePath.append(Route.product(productId))
+        NavigationStack(path: $homePath) {
+            ScrollView {
+                LazyVStack(spacing: 20) {
+                    ForEach(viewModel.products) { product in
+                        ProductRowView(product: product) { productId in
+                            homePath.append(Route.product(productId))
+                        }
+                        .background(
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(Color.white)
+                                .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 4)
+                        )
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                    }
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 20)
             }
-            .listRowBackground(
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.white)
-                    .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
-            )
-            .padding(.vertical, 5) // spacing between rows
+            .background(Color(UIColor.systemGroupedBackground))
+            .navigationDestination(for: Route.self) { route in
+                switch route {
+                case .product(let productId):
+                    ProductScreen(productId: productId)
+                default:
+                    EmptyView()
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Today")
+                        .font(.largeTitle.bold())
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+            }
+            .toolbarBackground(.ultraThinMaterial, for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)       
         }
-        .listStyle(PlainListStyle()) // removes extra default padding
-        .padding(.horizontal, 10)
-        .background(Color(UIColor.systemGroupedBackground))
-        .navigationDestination(for: Route.self) { route in
-               switch route {
-               case .product(let productId):
-                   ProductScreen(productId: productId)
-               default:
-                   EmptyView()
-               }
-           }
-       }
+    }
 }
