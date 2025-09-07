@@ -32,10 +32,10 @@ class ProductMapper {
         entity.discountPercentage = product.discountPercentage
         entity.rating = product.rating
         entity.stock = product.stock
-        entity.brand = product.brand
-        entity.category = product.category
-        entity.thumbnail = product.thumbnail
-        entity.images.append(objectsIn: product.images)
+        entity.brand = product.brand ?? ""
+        entity.category = product.category ?? ""
+        entity.thumbnail = product.thumbnail ?? ""
+        entity.images.append(objectsIn: product.images ?? [])
         return entity
     }
     

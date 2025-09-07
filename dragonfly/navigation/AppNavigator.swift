@@ -31,9 +31,9 @@ class AppNavigator : ObservableObject {
     @ViewBuilder
     func rootScreen() -> some View{
         if(isLoggedIn){
-            LoginScreen()
-        }else{
             MainScreen()
+        }else{
+            LoginScreen()
         }
         
     }

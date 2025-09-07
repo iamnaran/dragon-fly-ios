@@ -12,25 +12,30 @@ import RealmSwift
 
 struct HomeScreen: View {
     
-    @StateObject private var viewModel = HomeViewModel()
+    @ObservedObject private var viewModel = HomeViewModel()
     
     @EnvironmentObject private var appNavigator: AppNavigator
     
-    @ObservedResults(ProductEntity.self) var productEntities
 
     
     var body: some View {
         
-        List(productEntities) { product in
-                
-            ProductRowView(product: product){ productId in
-                
-                appNavigator.navigateTo(route: .product(productId))
-                
-            }.listRowSeparator(.hidden)
-                
+        VStack{
+            Text("Home").font(.headline)
+            
+            List(viewModel.products) { product in
+                    
+                ProductRowView(product: product){ productId in
+                    
+                    appNavigator.navigateTo(route: .product(productId))
+                    
+                }.listRowSeparator(.hidden)
+                    
+            }
+            .listStyle(.inset)
         }
-        .listStyle(.inset)
+        
+       
           
     }
 }

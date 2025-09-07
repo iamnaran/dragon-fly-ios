@@ -8,6 +8,6 @@
 import Foundation
 
 struct LoginViewState{
-    var username: String = "kminchelle"
-    var password: String = "0lelplR"
+    var username: String = "emilys"
+    var password: String = "emilyspass"
 }

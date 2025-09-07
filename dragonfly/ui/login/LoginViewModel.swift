@@ -28,12 +28,14 @@ class LoginViewModel: ObservableObject{
             .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
                 case .finished:
+                    print("Finished")
                     break
                 case .failure(let error):
                     self?.error = error
                 }
             }, receiveValue: { [weak self] user in
                 AppStorageManager.shared.setUserLoggedIn(true)
+                AppStorageManager.shared.setLoggedInUserToken(user.accessToken)
                 self?.isAuthenticated = true
             })
             .store(in: &cancellables)

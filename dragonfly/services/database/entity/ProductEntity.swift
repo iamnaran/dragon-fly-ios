@@ -12,7 +12,7 @@ class ProductEntity: Object, Identifiable {
     @objc dynamic var id: String = UUID().uuidString
     @objc dynamic var title: String = ""
     @objc dynamic var descriptionText: String = ""
-    @objc dynamic var price: Int = 0
+    @objc dynamic var price: Double = 0.0
     @objc dynamic var discountPercentage: Double = 0.0
     @objc dynamic var rating: Double = 0.0
     @objc dynamic var stock: Int = 0

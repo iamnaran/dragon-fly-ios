@@ -45,10 +45,11 @@
 		A560BBCE2B8A06F6000F1D89 /* AppCheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A560BBCD2B8A06F6000F1D89 /* AppCheckBox.swift */; };
 		A560BBD12B8A1204000F1D89 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A560BBD02B8A1204000F1D89 /* RealmSwift */; };
 		A560BBD42B8A1236000F1D89 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A560BBD32B8A1236000F1D89 /* DBManager.swift */; };
-		A560BBDA2B8A15DB000F1D89 /* ProductUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A560BBD92B8A15DB000F1D89 /* ProductUseCase.swift */; };
 		A560BBE32B8A191F000F1D89 /* ProductEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A560BBE22B8A191F000F1D89 /* ProductEntity.swift */; };
 		A560BBE62B8A1A93000F1D89 /* ProductMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A560BBE52B8A1A93000F1D89 /* ProductMapper.swift */; };
 		A5F8CEAD2B89D1AA007252C0 /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8CEAC2B89D1AA007252C0 /* AppNavigator.swift */; };
+		F483026A2E6B436F00AD2FAF /* LearningScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48302692E6B436500AD2FAF /* LearningScreen.swift */; };
+		F483026C2E6B439700AD2FAF /* LearningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F483026B2E6B439200AD2FAF /* LearningViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,10 +89,11 @@
 		A5476F432B8782FC00F97C9A /* AppStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageManager.swift; sourceTree = "<group>"; };
 		A560BBCD2B8A06F6000F1D89 /* AppCheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCheckBox.swift; sourceTree = "<group>"; };
 		A560BBD32B8A1236000F1D89 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
-		A560BBD92B8A15DB000F1D89 /* ProductUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductUseCase.swift; sourceTree = "<group>"; };
 		A560BBE22B8A191F000F1D89 /* ProductEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductEntity.swift; sourceTree = "<group>"; };
 		A560BBE52B8A1A93000F1D89 /* ProductMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductMapper.swift; sourceTree = "<group>"; };
 		A5F8CEAC2B89D1AA007252C0 /* AppNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
+		F48302692E6B436500AD2FAF /* LearningScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningScreen.swift; sourceTree = "<group>"; };
+		F483026B2E6B439200AD2FAF /* LearningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +129,6 @@
 		A5476EDC2B877B6D00F97C9A /* dragonfly */ = {
 			isa = PBXGroup;
 			children = (
-				A560BBD82B8A15CB000F1D89 /* domian */,
 				A5476EDD2B877B6D00F97C9A /* dragonflyApp.swift */,
 				A5476F3C2B8782B300F97C9A /* services */,
 				A5476EEF2B877CD700F97C9A /* data */,
@@ -201,6 +202,7 @@
 		A5476EF52B877D7C00F97C9A /* main */ = {
 			isa = PBXGroup;
 			children = (
+				F48302682E6B435D00AD2FAF /* learning */,
 				A5476F062B877F1C00F97C9A /* profile */,
 				A5476F052B877F1000F97C9A /* notification */,
 				A5476F042B877EFF00F97C9A /* home */,
@@ -329,22 +331,6 @@
 			path = database;
 			sourceTree = "<group>";
 		};
-		A560BBD52B8A135A000F1D89 /* helper */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = helper;
-			sourceTree = "<group>";
-		};
-		A560BBD82B8A15CB000F1D89 /* domian */ = {
-			isa = PBXGroup;
-			children = (
-				A560BBD52B8A135A000F1D89 /* helper */,
-				A560BBD92B8A15DB000F1D89 /* ProductUseCase.swift */,
-			);
-			path = domian;
-			sourceTree = "<group>";
-		};
 		A560BBDB2B8A17B3000F1D89 /* repo */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,6 +354,15 @@
 				A560BBE52B8A1A93000F1D89 /* ProductMapper.swift */,
 			);
 			path = mapper;
+			sourceTree = "<group>";
+		};
+		F48302682E6B435D00AD2FAF /* learning */ = {
+			isa = PBXGroup;
+			children = (
+				F483026B2E6B439200AD2FAF /* LearningViewModel.swift */,
+				F48302692E6B436500AD2FAF /* LearningScreen.swift */,
+			);
+			path = learning;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -452,6 +447,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5476F422B8782EE00F97C9A /* NetworkManger.swift in Sources */,
+				F483026A2E6B436F00AD2FAF /* LearningScreen.swift in Sources */,
 				A5F8CEAD2B89D1AA007252C0 /* AppNavigator.swift in Sources */,
 				A5476EFF2B877ED600F97C9A /* MainViewModel.swift in Sources */,
 				A5476F272B87819100F97C9A /* AppImages.swift in Sources */,
@@ -464,7 +460,6 @@
 				A5476F2D2B87820100F97C9A /* ProductResponse.swift in Sources */,
 				A560BBD42B8A1236000F1D89 /* DBManager.swift in Sources */,
 				A5476F0B2B877F4300F97C9A /* ProfileScreen.swift in Sources */,
-				A560BBDA2B8A15DB000F1D89 /* ProductUseCase.swift in Sources */,
 				A5476F092B877F3400F97C9A /* ProfileViewModel.swift in Sources */,
 				A5476EF32B877D5800F97C9A /* RootContainer.swift in Sources */,
 				A5476F232B87813900F97C9A /* OnBoardViewModel.swift in Sources */,
@@ -480,6 +475,7 @@
 				A5476F1A2B87802800F97C9A /* ProductRowView.swift in Sources */,
 				A5476F0D2B877F5100F97C9A /* NotificationScreen.swift in Sources */,
 				A5476F032B877EF500F97C9A /* LoginViewModel.swift in Sources */,
+				F483026C2E6B439700AD2FAF /* LearningViewModel.swift in Sources */,
 				A5476F212B87812700F97C9A /* OnBoardScreen.swift in Sources */,
 				A5476F132B877F7B00F97C9A /* ProductViewModel.swift in Sources */,
 				A5476F152B877F8700F97C9A /* ProductScreen.swift in Sources */,
@@ -615,6 +611,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"dragonfly/Preview Content\"";
+				DEVELOPMENT_TEAM = TEMN6JY2VC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Dragonfly;
@@ -645,6 +642,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"dragonfly/Preview Content\"";
+				DEVELOPMENT_TEAM = TEMN6JY2VC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Dragonfly;

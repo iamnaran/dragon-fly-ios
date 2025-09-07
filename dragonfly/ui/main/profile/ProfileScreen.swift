@@ -11,7 +11,8 @@ import SwiftUI
 struct ProfileScreen: View {
     
     @ObservedObject private var viewModel = ProfileViewModel()
-
+    @EnvironmentObject var navigator: AppNavigator
+    
     
     var body: some View {
                     
@@ -23,7 +24,13 @@ struct ProfileScreen: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .padding()
                 
+                AppButton(config: .init(text: "Logout", action: {
+                    viewModel.logout()
+                }))
+                
             }.toolbar(.hidden)
+        
+        
             
     }
 }

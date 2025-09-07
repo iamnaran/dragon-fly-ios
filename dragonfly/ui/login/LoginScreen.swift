@@ -12,6 +12,7 @@ struct LoginScreen: View {
     @EnvironmentObject private var appNavigator: AppNavigator
 
     @ObservedObject private var viewModel = LoginViewModel()
+    
     @State private var loginState = LoginViewState()
     
     @State private var isAnimating = false

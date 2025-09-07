@@ -15,6 +15,7 @@ struct UserResponse : Identifiable, Codable{
     var lastName: String
     var gender: String
     var image: String
-    var token: String
+    var accessToken: String
+    var refreshToken: String
 }
 

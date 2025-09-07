@@ -10,8 +10,6 @@ import SwiftUI
 @main
 struct dragonflyApp: App {
     
-    
-    
     var body: some Scene {
         WindowGroup {
             RootContainer()
