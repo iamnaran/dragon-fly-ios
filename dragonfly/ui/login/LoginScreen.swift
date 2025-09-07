@@ -33,7 +33,6 @@ struct LoginScreen: View {
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 200, height: 150)
-                        .foregroundColor(.blue)
                         .padding(.bottom, 30)
                     
                     
@@ -45,6 +44,8 @@ struct LoginScreen: View {
                             .padding()
                             .focused($focusedField, equals: .username)
                             .background(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
+                            .padding(.horizontal, 50)
+                            .padding(.bottom, 20)
                             .clipShape(.rect(cornerRadius: 4))
                             .background(.background)
                             .submitLabel(.next)
@@ -61,10 +62,12 @@ struct LoginScreen: View {
                             ))
                             .padding()
                             .background(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
+                            .padding(.horizontal, 50)
+                            .padding(.bottom, 20)
                             .focused($focusedField, equals: .password)
                             .submitLabel(.go)
                             .onSubmit {
-                                viewModel.login()
+                                preformLogin()
                             }.onTapGesture {
                                 focusedField = .password
                             }
@@ -74,7 +77,7 @@ struct LoginScreen: View {
                         }
                         
                         Button(action: {
-                            viewModel.login()
+                            preformLogin()
                         }) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 10)
@@ -108,7 +111,6 @@ struct LoginScreen: View {
                 }
                 .edgesIgnoringSafeArea(.all)
                 .ignoresSafeArea(.container, edges: .top)
-                .background(Color.white)
                 .onReceive(viewModel.$state) { state in
                     if state.isAuthenticated  {
                         appNavigator.navigateTo(route: .main)
@@ -118,9 +120,16 @@ struct LoginScreen: View {
                 }
           
         }
-        }
+    }
+    
+    func preformLogin(){
+        viewModel.login()
+        focusedField = nil
+    }
         
 }
+
+
 
 struct Login_Previews: PreviewProvider {
     static var previews: some View {

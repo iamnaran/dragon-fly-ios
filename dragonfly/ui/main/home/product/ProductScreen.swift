@@ -19,7 +19,6 @@ struct ProductScreen: View {
         VStack {
             Text("Product Id "+productId)
                 .font(.title)
-                .foregroundColor(.black)
                 .padding()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .padding()

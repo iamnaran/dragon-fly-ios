@@ -24,17 +24,16 @@ struct HomeScreen: View {
                             homePath.append(Route.product(productId))
                         }
                         .background(
-                            RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.white)
-                                .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 4)
-                        )
+                               RoundedRectangle(cornerRadius: 20)
+                                   .fill(.ultraThinMaterial) 
+                                   .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 4)
+                           )
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                     }
                 }
                 .padding(.horizontal, 16)
                 .padding(.vertical, 20)
             }
-            .background(Color(UIColor.systemGroupedBackground))
             .navigationDestination(for: Route.self) { route in
                 switch route {
                 case .product(let productId):
