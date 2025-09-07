@@ -40,6 +40,8 @@ class HomeViewModel : ObservableObject{
                     break
                 case .failure(let error):
                     self?.error = error
+                    self?.loadProductsFromDB()
+
                     print("Error fetching products:", error)
                 }
             }, receiveValue: { [weak self] allProducts in
@@ -56,6 +58,19 @@ class HomeViewModel : ObservableObject{
                 self?.isLoading = false
             })
             .store(in: &cancellables)
+        }
+    
+    
+    // MARK: - Load products from local DB
+    private func loadProductsFromDB() {
+            let results = dbManager.getAllObjects(ProductEntity.self)
+            self.products = Array(results)
+            
+            if products.isEmpty {
+                print("No products in local DB")
+            } else {
+                print("Loaded \(products.count) products from DB")
+            }
         }
     
     

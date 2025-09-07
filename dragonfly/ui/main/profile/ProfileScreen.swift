@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ProfileScreen: View {
     
+    @Binding var profilePath: NavigationPath
+
     @ObservedObject private var viewModel = ProfileViewModel()
     @EnvironmentObject var navigator: AppNavigator
     
@@ -35,8 +37,3 @@ struct ProfileScreen: View {
     }
 }
 
-struct Profile_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileScreen()
-    }
-}

@@ -10,6 +10,7 @@ import Foundation
 import SwiftUI
 
 struct NotificationScreen: View {
+    @Binding var notificationPath: NavigationPath
     
     @ObservedObject private var viewModel = NotificationViewModel()
 
@@ -25,11 +26,5 @@ struct NotificationScreen: View {
                 
             }.toolbar(.hidden)
 
-    }
-}
-
-struct Notification_Previews: PreviewProvider {
-    static var previews: some View {
-        NotificationScreen()
     }
 }

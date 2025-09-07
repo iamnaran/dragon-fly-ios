@@ -85,9 +85,10 @@ struct LoginScreen: View {
         .ignoresSafeArea(.keyboard)
         .background(Color.white)
         .onReceive(viewModel.$isAuthenticated) { isAuthenticated in
-            if isAuthenticated{
-                appNavigator.navigateTo(route: .main)
-            }
+            if isAuthenticated {
+                    let navigator = appNavigator
+                    navigator.navigateTo(route: .main)
+                }
         }
         .onAppear {
             withAnimation(.linear(duration: 1)) {

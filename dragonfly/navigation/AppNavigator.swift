@@ -1,70 +1,50 @@
-//
-//  AppRouter.swift
-//  firefly
-//
-//  Created by Na Ran on 21/02/2024.
-//
-
 import Foundation
 import SwiftUI
 import Combine
 
-
-// Contains the possible destinations in our Router
+// Define possible navigation destinations
 enum Route: Hashable {
     case login
     case main
     case product(String)
-    
 }
 
-class AppNavigator : ObservableObject {
+class AppNavigator: ObservableObject {
     
     @Published var routes: [Route] = []
-        
+
     let appStorage = AppStorageManager.shared
 
     var isLoggedIn: Bool {
         appStorage.isUserLoggedIn()
     }
-    
+
+    // MARK: - Root screen decides login/main
     @ViewBuilder
-    func rootScreen() -> some View{
-        if(isLoggedIn){
+    func rootScreen() -> some View {
+        if isLoggedIn {
             MainScreen()
-        }else{
+        } else {
             LoginScreen()
         }
-        
     }
-    
-// MARK: - Builds views for screen
-    @ViewBuilder
-    func getAppScreen(_ route: Route) -> some View {
-        switch route {
-        case .login:
-            LoginScreen()
-        case .main:
-            MainScreen()
-        case .product(let productId):
-            ProductScreen(productId: productId)
-       
-        }
+
+    // MARK: - Programmatic navigation inside tabs
+    func navigateToProduct(_ productId: String) {
+        // This method can be called from HomeScreen's NavigationStack
+        routes.append(.product(productId))
     }
-    
-// MARK: - Used by views to navigate to another view
     
     func navigateTo(route: Route) {
         routes.append(route)
     }
-    
-    // Back to navigation
+
     func navigateUp() {
+        guard !routes.isEmpty else { return }
         routes.removeLast()
     }
-    
+
     func popToRoot() {
-        routes.removeLast(routes.count)
+        routes.removeAll()
     }
-    
 }

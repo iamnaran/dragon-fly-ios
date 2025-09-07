@@ -1,51 +1,41 @@
-//
-//  MainScreen.swift
-//  firefly
-//
-//  Created by Na Ran on 21/02/2024.
-//
-
-import Foundation
-
 import SwiftUI
 
 struct MainScreen: View {
     
-    @ObservedObject private var viewModel = MainViewModel()
-    
+    @StateObject private var viewModel = MainViewModel()
     @EnvironmentObject private var appNavigator: AppNavigator
 
+    @State private var homePath = NavigationPath()
+    @State private var profilePath = NavigationPath()
+    @State private var notificationPath = NavigationPath()
 
     var body: some View {
-        
-        TabView {
-            
-            HomeScreen()
-                .badge(2)
-                .tabItem {
-                    Label("Home", systemImage: "house")
-                }.environmentObject(appNavigator)
-            ProfileScreen()
-                .tabItem {
-                    Label("Profile", systemImage: "person")
-                }.environmentObject(appNavigator)
-            NotificationScreen()
-                .badge("!")
-                .tabItem {
-                    Label("Notification", systemImage: "bell")
-                }.environmentObject(appNavigator)
-        }
-        .navigationBarHidden(true)
-        .padding(.top, 0)
+           TabView {
+               // Home tab
+               NavigationStack(path: $homePath) {
+                   HomeScreen(homePath: $homePath)
+               }
+               .tabItem { Label("Home", systemImage: "house") }
+               .badge(2)
 
-        
-    }
-        
+               // Profile tab
+               NavigationStack(path: $profilePath) {
+                   ProfileScreen(profilePath: $profilePath)
+               }
+               .tabItem { Label("Profile", systemImage: "person") }
+
+               // Notification tab
+               NavigationStack(path: $notificationPath) {
+                   NotificationScreen(notificationPath: $notificationPath)
+               }
+               .tabItem { Label("Notification", systemImage: "bell") }
+               .badge("!")
+           }
+           .environmentObject(appNavigator)
+       }
 }
 
 #Preview {
     MainScreen()
         .environmentObject(AppNavigator())
 }
-
-

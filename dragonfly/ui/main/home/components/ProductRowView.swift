@@ -56,10 +56,7 @@ struct ProductRowView: View {
             
         }
         .frame(width:  UIScreen.main.bounds.width - 30)
-        .background(Color.white)
-        .cornerRadius(10)
         .shadow(radius: 1)
-        .foregroundColor(Color.gray)
         .onTapGesture {
             onItemClick(product.title)
         }
