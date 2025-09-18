@@ -129,10 +129,6 @@ struct LoginScreen: View {
         
 }
 
-
-
-struct Login_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginScreen()
-    }
+#Preview {
+    LoginScreen()
 }

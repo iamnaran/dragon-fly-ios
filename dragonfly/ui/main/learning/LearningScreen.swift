@@ -5,7 +5,6 @@
 //  Created by Narayan Panthi on 9/5/25.
 //
 
-import SwiftUICore
 import SwiftUI
 
 struct LearningScreen: View {

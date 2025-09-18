@@ -1,7 +1,7 @@
 import Foundation
 
 enum AppStorageKeys: String {
-    case isLoggedIn, loggedInUser
+    case isLoggedIn, loggedInUser, isOnBoarded
 }
 
 final class AppStorageManager {
@@ -26,6 +26,12 @@ final class AppStorageManager {
         get { getValue(.isLoggedIn, defaultValue: false) }
         set { setValue(newValue, forKey: .isLoggedIn) }
     }
+    
+    var isOnBoarded: Bool {
+        get { getValue(.isOnBoarded, defaultValue: false) }
+        set { setValue(newValue, forKey: .isOnBoarded) }
+    }
+    
     
     var loggedInUserId: String {
           get { getLoggedInUser()?.id.description ?? "" }
