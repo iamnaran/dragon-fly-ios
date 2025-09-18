@@ -19,7 +19,6 @@ struct LoginScreen: View {
         case username, password
     }
     
-
     var body: some View {
         
         ScrollView{

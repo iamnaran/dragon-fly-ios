@@ -8,20 +8,22 @@
 import SwiftUI
 
 struct RootContainer: View {
-
+    
     @StateObject var appNavigator = AppNavigator()
-    @StateObject var themeManager = ThemeManager()
-
+    
     var body: some View {
         Group {
             if appNavigator.isLoggedIn {
                 MainScreen()
                     .environmentObject(appNavigator)
-                    .environmentObject(themeManager)
             } else {
-                LoginScreen()
-                    .environmentObject(appNavigator)
-                    .environmentObject(themeManager)
+                if appNavigator.isOnBoardCompleted {
+                    OnBoardScreen()
+                        .environmentObject(appNavigator)
+                }else{
+                    LoginScreen()
+                        .environmentObject(appNavigator)
+                }
             }
         }
     }

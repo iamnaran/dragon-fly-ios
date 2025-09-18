@@ -18,6 +18,10 @@ class AppNavigator: ObservableObject {
     var isLoggedIn: Bool {
         appStorage.isUserLoggedIn
     }
+    
+    var isOnBoardCompleted: Bool {
+        appStorage.isOnBoarded
+    }
 
     // MARK: - Root screen decides login/main
     @ViewBuilder

@@ -9,11 +9,11 @@ import Foundation
 import SwiftUI
 
 enum AppImage: String{
-    case appLogo = "fireflylogo"
-    case placeholder = "placeholder"
+    case appLogo = "FireflyLogo"
+    case placeholder = "Placeholder"
 }
 
-extension Image{
+extension Image {
     
     init(name: AppImage){
         self.init(name.rawValue)

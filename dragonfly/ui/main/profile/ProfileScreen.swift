@@ -20,6 +20,8 @@ struct ProfileScreen: View {
     @State private var showLogoutAlert = false
     
     
+    
+    
     var body: some View {
                     
             VStack(spacing: 10) {
@@ -43,9 +45,9 @@ struct ProfileScreen: View {
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 
-                AppButton(config: .init(text: "Logout", action: {
+                Button("Logout"){
                     showLogoutAlert = true
-                }))
+                }.buttonStyle(.borderedProminent)
                 
             }
        
@@ -73,6 +75,7 @@ struct ProfileScreen: View {
         navigator.navigateTo(route: .login)
     }
 }
+
 
 
 

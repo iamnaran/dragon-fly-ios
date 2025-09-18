@@ -11,11 +11,11 @@ import Kingfisher
 struct ProductRowView: View {
     let product: ProductEntity
     let onItemClick: (String) -> Void
+    
 
-    @Environment(\.theme) var theme
 
     var body: some View {
-        VStack(spacing: theme.spacing.medium) {
+        VStack(spacing: AppShape.medium.radius) {
             let screenHeight = UIApplication.shared.connectedScenes
                 .compactMap { $0 as? UIWindowScene }
                 .first?.screen.bounds.height ?? 800 
@@ -28,25 +28,20 @@ struct ProductRowView: View {
                 .frame(height: imageHeight)
                 .frame(maxWidth: .infinity)
                 .clipped()
-                .cornerRadius(theme.corners.medium)
-                .shadow(color: theme.shadows.light.color,
-                        radius: theme.shadows.light.radius,
-                        x: theme.shadows.light.x,
-                        y: theme.shadows.light.y)
-
-            VStack(alignment: .leading, spacing: theme.spacing.small) {
+         
+            VStack(alignment: .leading, spacing: AppShape.medium.radius) {
                 Text(product.title)
                     .font(.title)
-                    .foregroundColor(theme.colors.text)
+                    .foregroundColor(AppColor.primaryText.color)
 
                 Text(product.descriptionText)
                     .font(.body)
-                    .foregroundColor(theme.colors.secondary)
+                    .foregroundColor(AppColor.secondaryText.color)
                     .lineLimit(2)
             }
             .padding()
         }
-        .padding(theme.spacing.medium)
+        .padding(AppShape.medium.radius)
         .onTapGesture {
             onItemClick(product.title)
         }

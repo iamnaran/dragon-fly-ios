@@ -31,7 +31,7 @@
 		A5476F212B87812700F97C9A /* OnBoardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5476F202B87812700F97C9A /* OnBoardScreen.swift */; };
 		A5476F232B87813900F97C9A /* OnBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5476F222B87813900F97C9A /* OnBoardViewModel.swift */; };
 		A5476F252B87818500F97C9A /* AppIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5476F242B87818500F97C9A /* AppIcons.swift */; };
-		A5476F272B87819100F97C9A /* AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5476F262B87819100F97C9A /* AppImages.swift */; };
+		A5476F272B87819100F97C9A /* AppImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5476F262B87819100F97C9A /* AppImage.swift */; };
 		A5476F292B87819C00F97C9A /* CommonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5476F282B87819C00F97C9A /* CommonUtils.swift */; };
 		A5476F2D2B87820100F97C9A /* ProductResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5476F2C2B87820100F97C9A /* ProductResponse.swift */; };
 		A5476F2F2B87820E00F97C9A /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5476F2E2B87820E00F97C9A /* UserResponse.swift */; };
@@ -55,11 +55,9 @@
 		F40132CF2E6E3DED00559C5A /* HomeItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40132CE2E6E3DE800559C5A /* HomeItemViewModel.swift */; };
 		F40132D22E6E511F00559C5A /* ProductDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40132D12E6E511B00559C5A /* ProductDTO.swift */; };
 		F462858A2E7C4BEA000293F5 /* OnBoardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46285892E7C4BE6000293F5 /* OnBoardItem.swift */; };
-		F462858D2E7C4F40000293F5 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F462858C2E7C4F34000293F5 /* Theme.swift */; };
-		F462858F2E7C4F54000293F5 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F462858E2E7C4F50000293F5 /* AppTheme.swift */; };
-		F46285912E7C5004000293F5 /* ThemeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46285902E7C5004000293F5 /* ThemeKey.swift */; };
-		F46285932E7C5015000293F5 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46285922E7C5015000293F5 /* ThemeManager.swift */; };
-		F46285952E7C50FA000293F5 /* ThemeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46285942E7C50FA000293F5 /* ThemeProvider.swift */; };
+		F46285A52E7C9802000293F5 /* AppShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46285A42E7C97F9000293F5 /* AppShape.swift */; };
+		F46285A72E7C9811000293F5 /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46285A62E7C980F000293F5 /* AppFont.swift */; };
+		F46285A92E7C987A000293F5 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46285A82E7C987A000293F5 /* AppColors.swift */; };
 		F483026A2E6B436F00AD2FAF /* LearningScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48302692E6B436500AD2FAF /* LearningScreen.swift */; };
 		F483026C2E6B439700AD2FAF /* LearningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F483026B2E6B439200AD2FAF /* LearningViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -90,7 +88,7 @@
 		A5476F202B87812700F97C9A /* OnBoardScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardScreen.swift; sourceTree = "<group>"; };
 		A5476F222B87813900F97C9A /* OnBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardViewModel.swift; sourceTree = "<group>"; };
 		A5476F242B87818500F97C9A /* AppIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcons.swift; sourceTree = "<group>"; };
-		A5476F262B87819100F97C9A /* AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImages.swift; sourceTree = "<group>"; };
+		A5476F262B87819100F97C9A /* AppImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImage.swift; sourceTree = "<group>"; };
 		A5476F282B87819C00F97C9A /* CommonUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUtils.swift; sourceTree = "<group>"; };
 		A5476F2C2B87820100F97C9A /* ProductResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductResponse.swift; sourceTree = "<group>"; };
 		A5476F2E2B87820E00F97C9A /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
@@ -111,11 +109,9 @@
 		F40132CE2E6E3DE800559C5A /* HomeItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItemViewModel.swift; sourceTree = "<group>"; };
 		F40132D12E6E511B00559C5A /* ProductDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDTO.swift; sourceTree = "<group>"; };
 		F46285892E7C4BE6000293F5 /* OnBoardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardItem.swift; sourceTree = "<group>"; };
-		F462858C2E7C4F34000293F5 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		F462858E2E7C4F50000293F5 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
-		F46285902E7C5004000293F5 /* ThemeKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeKey.swift; sourceTree = "<group>"; };
-		F46285922E7C5015000293F5 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
-		F46285942E7C50FA000293F5 /* ThemeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProvider.swift; sourceTree = "<group>"; };
+		F46285A42E7C97F9000293F5 /* AppShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppShape.swift; sourceTree = "<group>"; };
+		F46285A62E7C980F000293F5 /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
+		F46285A82E7C987A000293F5 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		F48302692E6B436500AD2FAF /* LearningScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningScreen.swift; sourceTree = "<group>"; };
 		F483026B2E6B439200AD2FAF /* LearningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,7 +149,7 @@
 		A5476EDC2B877B6D00F97C9A /* dragonfly */ = {
 			isa = PBXGroup;
 			children = (
-				F462858B2E7C4F2E000293F5 /* theme */,
+				F46285962E7C9325000293F5 /* theme */,
 				A5476EDD2B877B6D00F97C9A /* dragonflyApp.swift */,
 				A5476F3C2B8782B300F97C9A /* services */,
 				A5476EEF2B877CD700F97C9A /* data */,
@@ -200,7 +196,6 @@
 			children = (
 				F40132C62E6E029F00559C5A /* UIUtils.swift */,
 				A5476F242B87818500F97C9A /* AppIcons.swift */,
-				A5476F262B87819100F97C9A /* AppImages.swift */,
 				A5476F282B87819C00F97C9A /* CommonUtils.swift */,
 			);
 			path = utils;
@@ -404,14 +399,13 @@
 			path = dto;
 			sourceTree = "<group>";
 		};
-		F462858B2E7C4F2E000293F5 /* theme */ = {
+		F46285962E7C9325000293F5 /* theme */ = {
 			isa = PBXGroup;
 			children = (
-				F46285942E7C50FA000293F5 /* ThemeProvider.swift */,
-				F46285922E7C5015000293F5 /* ThemeManager.swift */,
-				F46285902E7C5004000293F5 /* ThemeKey.swift */,
-				F462858E2E7C4F50000293F5 /* AppTheme.swift */,
-				F462858C2E7C4F34000293F5 /* Theme.swift */,
+				F46285A82E7C987A000293F5 /* AppColors.swift */,
+				F46285A62E7C980F000293F5 /* AppFont.swift */,
+				F46285A42E7C97F9000293F5 /* AppShape.swift */,
+				A5476F262B87819100F97C9A /* AppImage.swift */,
 			);
 			path = theme;
 			sourceTree = "<group>";
@@ -508,22 +502,20 @@
 			files = (
 				A5476F422B8782EE00F97C9A /* NetworkManger.swift in Sources */,
 				F483026A2E6B436F00AD2FAF /* LearningScreen.swift in Sources */,
+				F46285A72E7C9811000293F5 /* AppFont.swift in Sources */,
 				A5F8CEAD2B89D1AA007252C0 /* AppNavigator.swift in Sources */,
 				A5476EFF2B877ED600F97C9A /* MainViewModel.swift in Sources */,
-				A5476F272B87819100F97C9A /* AppImages.swift in Sources */,
+				A5476F272B87819100F97C9A /* AppImage.swift in Sources */,
 				F462858A2E7C4BEA000293F5 /* OnBoardItem.swift in Sources */,
 				A5476EFD2B877EC800F97C9A /* MainScreen.swift in Sources */,
 				A5476F0F2B877F5E00F97C9A /* NotificationViewModel.swift in Sources */,
 				A5476F1C2B8780EA00F97C9A /* LoginViewState.swift in Sources */,
+				F46285A92E7C987A000293F5 /* AppColors.swift in Sources */,
 				A5476EF92B877DC200F97C9A /* AppComponents.swift in Sources */,
 				A560BBE32B8A191F000F1D89 /* ProductEntity.swift in Sources */,
-				F46285932E7C5015000293F5 /* ThemeManager.swift in Sources */,
 				A5476F292B87819C00F97C9A /* CommonUtils.swift in Sources */,
-				F462858D2E7C4F40000293F5 /* Theme.swift in Sources */,
 				A5476F2D2B87820100F97C9A /* ProductResponse.swift in Sources */,
 				F40132CD2E6E3AC900559C5A /* ProductRepository.swift in Sources */,
-				F462858F2E7C4F54000293F5 /* AppTheme.swift in Sources */,
-				F46285912E7C5004000293F5 /* ThemeKey.swift in Sources */,
 				F40132C72E6E02A500559C5A /* UIUtils.swift in Sources */,
 				F40132CF2E6E3DED00559C5A /* HomeItemViewModel.swift in Sources */,
 				A560BBD42B8A1236000F1D89 /* DBManager.swift in Sources */,
@@ -548,7 +540,7 @@
 				F483026C2E6B439700AD2FAF /* LearningViewModel.swift in Sources */,
 				A5476F212B87812700F97C9A /* OnBoardScreen.swift in Sources */,
 				A5476F132B877F7B00F97C9A /* ProductViewModel.swift in Sources */,
-				F46285952E7C50FA000293F5 /* ThemeProvider.swift in Sources */,
+				F46285A52E7C9802000293F5 /* AppShape.swift in Sources */,
 				A5476F152B877F8700F97C9A /* ProductScreen.swift in Sources */,
 				F40132D22E6E511F00559C5A /* ProductDTO.swift in Sources */,
 				A5476F312B87823B00F97C9A /* AuthRepository.swift in Sources */,
