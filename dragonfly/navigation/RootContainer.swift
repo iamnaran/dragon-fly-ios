@@ -8,24 +8,25 @@
 import SwiftUI
 
 struct RootContainer: View {
-    
+
     @StateObject var appNavigator = AppNavigator()
-    
+    @StateObject var themeManager = ThemeManager()
+
     var body: some View {
         Group {
             if appNavigator.isLoggedIn {
                 MainScreen()
                     .environmentObject(appNavigator)
+                    .environmentObject(themeManager)
             } else {
                 LoginScreen()
                     .environmentObject(appNavigator)
+                    .environmentObject(themeManager)
             }
         }
     }
 }
 
-struct RootContainer_Previews: PreviewProvider {
-    static var previews: some View {
-        RootContainer()
-    }
+#Preview {
+    RootContainer()
 }

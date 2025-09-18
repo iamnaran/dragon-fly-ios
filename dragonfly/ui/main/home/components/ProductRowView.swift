@@ -12,54 +12,44 @@ struct ProductRowView: View {
     let product: ProductEntity
     let onItemClick: (String) -> Void
 
-    
-    var body: some View {
-        
-        VStack {
-            KFImage(URL(string: product.thumbnail)!)
-                .placeholder {
-                    Image(AppImage.placeholder.rawValue)
-                        .aspectRatio(contentMode: .fill)
-                        .frame(height: 200)
-                        .clipped()
-                }
-                .aspectRatio(contentMode: .fill)
-                 .frame(
-                    width: abs(UIScreen.main.bounds.width - 30),
-                    height: 200)
-                 .clipped()
+    @Environment(\.theme) var theme
 
-            VStack(alignment: .leading) {
-                // Product Title
+    var body: some View {
+        VStack(spacing: theme.spacing.medium) {
+            let screenHeight = UIApplication.shared.connectedScenes
+                .compactMap { $0 as? UIWindowScene }
+                .first?.screen.bounds.height ?? 800 
+
+            let imageHeight = screenHeight / 3
+
+            KFImage(URL(string: product.thumbnail))
+                .resizable()
+                .scaledToFill()
+                .frame(height: imageHeight)
+                .frame(maxWidth: .infinity)
+                .clipped()
+                .cornerRadius(theme.corners.medium)
+                .shadow(color: theme.shadows.light.color,
+                        radius: theme.shadows.light.radius,
+                        x: theme.shadows.light.x,
+                        y: theme.shadows.light.y)
+
+            VStack(alignment: .leading, spacing: theme.spacing.small) {
                 Text(product.title)
                     .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundColor(.primary)
-                    .padding(EdgeInsets(
-                        top: 4,
-                        leading: 0,
-                        bottom: 4,
-                        trailing: 0))
+                    .foregroundColor(theme.colors.text)
 
-                // Product Description
                 Text(product.descriptionText)
                     .font(.body)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(theme.colors.secondary)
                     .lineLimit(2)
-                    .padding(EdgeInsets(
-                        top: 4,
-                        leading: 0,
-                        bottom: 4,
-                        trailing: 0))
-
-            }.padding()
-            
+            }
+            .padding()
         }
-        .frame(width:  UIScreen.main.bounds.width - 30)
+        .padding(theme.spacing.medium)
         .onTapGesture {
             onItemClick(product.title)
         }
-        
     }
 }
 

@@ -42,7 +42,7 @@ actor ProductRepository {
     func saveProducts(_ apiProducts: ProductResponse) throws {
         let descriptor = FetchDescriptor<ProductData>()
         let existing = try context.fetch(descriptor)
-        var existingMap = Dictionary(uniqueKeysWithValues: existing.map { ($0.id, $0) })
+        let existingMap = Dictionary(uniqueKeysWithValues: existing.map { ($0.id, $0) })
         
         for p in apiProducts.products {
             if let ex = existingMap[p.id] {
