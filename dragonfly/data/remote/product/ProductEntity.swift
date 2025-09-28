@@ -1,18 +1,11 @@
 //
-//  ProductResponse.swift
-//  firefly
+//  ProductEntity.swift
+//  dragonfly
 //
-//  Created by Na Ran on 21/02/2024.
+//  Created by Narayan Panthi on 9/28/25.
 //
 
-import Foundation
-
-struct ProductResponse: Codable {
-    let products: [Product]
-    let total, skip, limit: Int
-}
-
-struct Product: Identifiable, Codable {
+struct ProductEntity: Identifiable, Codable {
     let id: Int
     let title: String
     let description: String

@@ -34,7 +34,7 @@ struct ProductDTO: Identifiable, Codable, Sendable {
         self.images = data.images
     }
 
-    init(from apiModel: Product) {
+    init(from apiModel: ProductEntity) {
         self.id = apiModel.id
         self.title = apiModel.title
         self.description = apiModel.description

@@ -8,18 +8,22 @@
 
 import SwiftUI
 import Foundation
-import RealmSwift
+import _SwiftData_SwiftUI
 
 struct HomeScreen: View {
     @Binding var homePath: NavigationPath
-    @ObservedObject private var viewModel = HomeViewModel()
     @EnvironmentObject private var appNavigator: AppNavigator
+    
+    @Environment(\.modelContext) private var modelContext
+    @ObservedObject private var viewModel = HomeViewModel()
+    @Query private var products: [ProductData]
+
 
     var body: some View {
         NavigationStack(path: $homePath) {
             ScrollView {
                 LazyVStack(spacing: 20) {
-                    ForEach(viewModel.products) { product in
+                    ForEach(products) { product in
                         ProductRowView(product: product) { productId in
                             homePath.append(Route.product(productId))
                         }
@@ -46,6 +50,10 @@ struct HomeScreen: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(.ultraThinMaterial, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
+            .onAppear{
+                viewModel.modelContext = self.modelContext
+                viewModel.fetchProductsFromAPI()
+            }
         }
     }
 }

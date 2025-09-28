@@ -9,7 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct ProductRowView: View {
-    let product: ProductEntity
+    let product: ProductData
     let onItemClick: (String) -> Void
     
 
@@ -22,7 +22,7 @@ struct ProductRowView: View {
 
             let imageHeight = screenHeight / 3
 
-            KFImage(URL(string: product.thumbnail))
+            KFImage(URL(string: product.thumbnail ?? ""))
                 .resizable()
                 .scaledToFill()
                 .frame(height: imageHeight)
@@ -34,7 +34,7 @@ struct ProductRowView: View {
                     .font(.title)
                     .foregroundColor(AppColor.primaryText.color)
 
-                Text(product.descriptionText)
+                Text(product.productDescription)
                     .font(.body)
                     .foregroundColor(AppColor.secondaryText.color)
                     .lineLimit(2)
@@ -49,10 +49,25 @@ struct ProductRowView: View {
 }
 
 
-#Preview {
-    ProductRowView(product: ProductEntity()) { title in
-        print("Tapped: \(title)")
+struct ProductRowView_Previews: PreviewProvider {
+    static var previews: some View {
+        let sampleProduct = ProductData(
+            id: 1,
+            title: "Sample Product",
+            productDescription: "This is a preview of the product description. Shows text wrapping and layout.",
+            price: 99.99,
+            discountPercentage: 10,
+            rating: 4.5,
+            stock: 20,
+            brand: "Dragonfly",
+            category: "Gadgets",
+            thumbnail: "https://via.placeholder.com/400x300.png",
+            images: ["https://via.placeholder.com/400x300.png"]
+        )
+        
+        ProductRowView(product: sampleProduct, onItemClick: { _ in })
+            .previewLayout(.sizeThatFits)
+            .padding()
     }
 }
-
 

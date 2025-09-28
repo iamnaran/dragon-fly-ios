@@ -7,72 +7,57 @@
 
 import Foundation
 import Combine
-import RealmSwift
+import SwiftData
 
+@MainActor
 class HomeViewModel : ObservableObject{
- 
-    private let homeRepository: HomeRepository
-    private let dbManager: DBManager
+    var modelContext: ModelContext!
     
-    @Published var products: [ProductEntity] = []
-
+    private let productService = ProductService()
+    @Published var errorMessage: String?
     private var cancellables = Set<AnyCancellable>()
     
-    @Published var isLoading: Bool = false
-    @Published var error: Error?
-
-    
-    init(homeRepository: HomeRepository = HomeRepository()) {
-        self.homeRepository = homeRepository
-        self.dbManager = DBManager.shared
-        fetchAllProducts()
+    init() {
+        
     }
     
-    func fetchAllProducts() {
-        self.isLoading = true
-        self.error = nil
-        
-        homeRepository.getAllProducts()
-            .sink(receiveCompletion: { [weak self] completion in
-                self?.isLoading = false
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let error):
-                    self?.error = error
-                    self?.loadProductsFromDB()
+    func fetchProductsFromAPI() {
+           productService.fetchAllProducts()
+               .receive(on: DispatchQueue.main)
+               .sink { [weak self] completion in
+                   if case let .failure(error) = completion {
+                       self?.errorMessage = error.localizedDescription
+                   }
+               } receiveValue: { [weak self] productEntities in
+                   guard let self, let context = self.modelContext else { return }
 
-                    print("Error fetching products:", error)
-                }
-            }, receiveValue: { [weak self] allProducts in
-                
-                // Map API response to Realm entities
-                let listOfProducts = ProductMapper.productListToEntityList(allProducts.products)
-                
-                // Save to DB
-                self?.dbManager.insertAll(listOfProducts)
-                
-                // Update UI
-                self?.products = listOfProducts
-                
-                self?.isLoading = false
-            })
-            .store(in: &cancellables)
-        }
-    
-    
-    // MARK: - Load products from local DB
-    private func loadProductsFromDB() {
-            let results = dbManager.getAllObjects(ProductEntity.self)
-            self.products = Array(results)
-            
-            if products.isEmpty {
-                print("No products in local DB")
-            } else {
-                print("Loaded \(products.count) products from DB")
-            }
-        }
-    
+                   var newProducts: [ProductData] = []
+
+                   for entity in productEntities {
+                       // Fetch all existing products
+                       let descriptor = FetchDescriptor<ProductData>()
+                       let allProducts = try? context.fetch(descriptor)
+
+                       if let existing = allProducts?.first(where: { (product: ProductData) in
+                           product.id == entity.id
+                       }) {
+                           existing.update(from: entity)
+                           newProducts.append(existing)
+                       } else {
+                           let productData = ProductData(from: entity)
+                           context.insert(productData)
+                           newProducts.append(productData)
+                       }
+                   }
+
+                   do {
+                       try context.save()
+                   } catch {
+                       self.errorMessage = "Failed to save products: \(error)"
+                   }
+               }
+               .store(in: &cancellables)
+       }
     
     
 }

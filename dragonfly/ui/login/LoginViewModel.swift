@@ -11,13 +11,13 @@ import Combine
 
 class LoginViewModel: ObservableObject{
     
-    private let authRepository: AuthRepository
+    private let authRepository: AuthService
     
     @Published private(set) var state = LoginViewState()
-
+    
     private var cancellables = Set<AnyCancellable>()
-        
-    init(authRepository: AuthRepository = AuthRepository()) {
+    
+    init(authRepository: AuthService = AuthService()) {
         self.authRepository = authRepository
     }
     
@@ -27,16 +27,16 @@ class LoginViewModel: ObservableObject{
         authRepository.login(username: state.username, password: state.password)
             .sink(receiveCompletion: { [weak self] completion in
                 DispatchQueue.main.async {
-                                self?.state.isLoading = false
-                                if case let .failure(error) = completion {
-                                    self?.state.error = error.localizedDescription
-                                }
+                    self?.state.isLoading = false
+                    if case let .failure(error) = completion {
+                        self?.state.error = error.localizedDescription
+                    }
                 }
             }, receiveValue: { [weak self] user in
                 DispatchQueue.main.async {
-                               self?.state.isAuthenticated = true
-                               AppStorageManager.shared.setLoggedInUser(user)
-            }
+                    self?.state.isAuthenticated = true
+                    AppStorageManager.shared.setLoggedInUser(user)
+                }
             })
             .store(in: &cancellables)
     }
@@ -50,7 +50,7 @@ class LoginViewModel: ObservableObject{
             error: state.error
         )
     }
-
+    
     func updatePassword(_ password: String) {
         state = LoginViewState(
             username: state.username,

@@ -9,7 +9,12 @@ import Foundation
 import Alamofire
 import Combine
 
-class AuthRepository{
+class AuthService{
+    
+    
+    init(){
+        
+    }
         
     func login(username: String, password: String) -> AnyPublisher<UserResponse, Error> {
            let loginUrl = EndPoints.loginUrl

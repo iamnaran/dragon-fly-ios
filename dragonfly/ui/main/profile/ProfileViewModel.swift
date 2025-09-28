@@ -9,14 +9,14 @@ import Foundation
 
 class ProfileViewModel : ObservableObject{
     
-    private let authRepository: AuthRepository
+    private let authRepository: AuthService
     
     @Published var isLoggedOut: Bool = false
     
     @Published var user: UserResponse?
 
     
-    init(authRepository: AuthRepository = AuthRepository()) {
+    init(authRepository: AuthService = AuthService()) {
         self.authRepository = authRepository
         loadUser()
     }

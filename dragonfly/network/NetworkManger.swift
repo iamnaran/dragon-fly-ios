@@ -13,11 +13,9 @@ class NetworkManager {
     
     static let shared = NetworkManager()
         
-    private init() {
-        
+    init() {
         
     }
-    
     
     func fetchData<T: Decodable>(
         url: String,

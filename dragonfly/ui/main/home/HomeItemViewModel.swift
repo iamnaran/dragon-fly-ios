@@ -13,15 +13,6 @@ import Foundation
 class HomeItemViewModel : ObservableObject {
     
     @Published var products: [ProductDTO] = []
-        @Published var isLoading: Bool = false
-        @Published var error: String?
-
-        private let repository: ProductRepository
-        private var cancellables = Set<AnyCancellable>()
-
-        init(repository: ProductRepository) {
-            self.repository = repository
-        }
 
     
 }
