@@ -1,6 +1,6 @@
 # Dragonfly iOS
 
-Dragonfly is an iOS app built with SwiftUI, following the MVVM (Model-View-ViewModel) architecture pattern. It includes Alamofire for networking, Realm database for offline caching, and a custom Navigation Stack implemented with the AppNavigator enum-based navigation system. 
+Dragonfly is an iOS app built with SwiftUI, following the MVVM (Model-View-ViewModel) architecture pattern. It includes Alamofire for networking, SwiftData database for offline caching, and a custom Navigation Stack implemented with the AppNavigator enum-based navigation system. 
 
 
 ## Features
@@ -8,13 +8,13 @@ Dragonfly is an iOS app built with SwiftUI, following the MVVM (Model-View-ViewM
 - **SwiftUI**: SwiftUI framework for building user interfaces.
 - **MVVM Architecture**: Follows the Model-View-ViewModel architectural pattern.
 - **Alamofire**: Integrates Alamofire for networking/handling of HTTP requests.
-- **Realm Database**: Offline caching of data.
+- **SwiftData**: Offline caching of data.
 - **AppNavigator**: Utilizes a custom enum-based navigation system, enhancing navigation flow and organization within the app.
 - **UserDefaults**: App Local Storage
 
-## Clone of Android App
+## Learn Jetpack Compose 
 
-[Firefly](https://github.com/iamnaran/firefly-compose) is an android clone app, featuring similar features and a specific folder structure and coding conventions.
+[Firefly](https://github.com/iamnaran/firefly-compose) is an clone of this app, featuring similar features and a specific folder structure and coding conventions.
 - Jetpack Compose UI
 - MVVM 
 - Retrofit - Network Library
