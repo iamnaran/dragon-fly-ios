@@ -13,7 +13,7 @@ class OnBoardViewModel : ObservableObject{
     
     init() {
         onBoardItems = [
-            OnBoardItem(image: .appLogo, title: "title", subtitle: "Sub title"),
-            OnBoardItem(image: .appLogo, title: "title", subtitle: "Sub title")                                      ]
+            OnBoardItem(image: .appLogo, title: "Welcome to Dragonfly", subtitle: "An app made with SwiftUI", gradientColors: [AppColor.accent.color, AppColor.primary.color]),
+            OnBoardItem(image: .appLogo, title: "Refreshed IOS26 UI ", subtitle: "Firefly usages all the default components", gradientColors: [AppColor.primary.color, AppColor.accent.color])                                      ]
     }
 }

@@ -12,6 +12,11 @@ struct OnBoardScreen: View{
     
     @ObservedObject private var viewModel = OnBoardViewModel()
     
+    init() {
+           UIPageControl.appearance().currentPageIndicatorTintColor = UIColor.systemRed
+           UIPageControl.appearance().pageIndicatorTintColor = UIColor.systemGray4
+    }
+    
     var body: some View{
         TabView{
             ForEach(0..<viewModel.onBoardItems.count, id: \.self){
@@ -22,7 +27,6 @@ struct OnBoardScreen: View{
             
         }.tabViewStyle(.page(indexDisplayMode: .always))
         
-        OnBoardScreen()
     }
     
 }

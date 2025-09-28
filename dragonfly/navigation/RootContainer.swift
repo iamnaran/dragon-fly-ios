@@ -17,13 +17,13 @@ struct RootContainer: View {
                 MainScreen()
                     .environmentObject(appNavigator)
             } else {
-                if appNavigator.isOnBoardCompleted {
-                    OnBoardScreen()
-                        .environmentObject(appNavigator)
-                }else{
+//                if appNavigator.isOnBoardCompleted {
                     LoginScreen()
                         .environmentObject(appNavigator)
-                }
+//                }else{
+//                    OnBoardScreen()
+//                        .environmentObject(appNavigator)
+//                }
             }
         }
     }

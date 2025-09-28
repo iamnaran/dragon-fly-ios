@@ -12,7 +12,7 @@ enum AppColor: String {
     case primary = "Primary"
     case background = "Background"
     case primaryText = "ColorPrimaryText"
-    case secondary = "ColorSecondary"
+    case secondary = "Secondary"
     case secondaryText = "ColorSecondaryText"
 
     case accent = "ColorAccent"
