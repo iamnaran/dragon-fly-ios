@@ -24,9 +24,14 @@ struct ProductRowView: View {
 
             KFImage(URL(string: product.thumbnail ?? ""))
                 .resizable()
+                .placeholder {
+                    Rectangle()
+                        .fill(Color.gray.opacity(0.3))
+                        .frame(width: .infinity, height: imageHeight)
+                }
+                .cacheOriginalImage()
                 .scaledToFill()
-                .frame(height: imageHeight)
-                .frame(maxWidth: .infinity)
+                .frame(width: .infinity, height: imageHeight)
                 .clipped()
          
             VStack(alignment: .leading, spacing: AppShape.medium.radius) {

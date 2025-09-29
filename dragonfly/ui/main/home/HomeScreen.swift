@@ -5,9 +5,7 @@
 //  Created by Na Ran on 20/02/2024.
 //
 
-
 import SwiftUI
-import Foundation
 import _SwiftData_SwiftUI
 
 struct HomeScreen: View {
@@ -18,26 +16,22 @@ struct HomeScreen: View {
     @ObservedObject private var viewModel = HomeViewModel()
     @Query private var products: [ProductData]
 
-
     var body: some View {
         NavigationStack(path: $homePath) {
-            ScrollView {
-                LazyVStack(spacing: 20) {
-                    ForEach(products) { product in
-                        ProductRowView(product: product) { productId in
-                            homePath.append(Route.product(productId))
-                        }
-                        .background(
-                               RoundedRectangle(cornerRadius: 20)
-                                   .fill(.ultraThinMaterial) 
-                                   .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 4)
-                           )
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
-                    }
+            List(products) { product in
+                ProductRowView(product: product) { productId in
+                    homePath.append(Route.product(productId))
                 }
-                .padding(.horizontal, 16)
-                .padding(.vertical, 20)
+                .listRowBackground(
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(.ultraThinMaterial)
+                        .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 4)
+                        .padding(.vertical, 4)
+                )
+                .listRowSeparator(.hidden)
             }
+            .listStyle(.plain) // removes default grouped styling
+            .padding(.horizontal, 8)
             .navigationDestination(for: Route.self) { route in
                 switch route {
                 case .product(let productId):

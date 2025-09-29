@@ -8,6 +8,9 @@ struct MainScreen: View {
     @State private var homePath = NavigationPath()
     @State private var profilePath = NavigationPath()
     @State private var notificationPath = NavigationPath()
+    
+    @State private var messagePath = NavigationPath()
+
 
     var body: some View {
            TabView {
@@ -29,7 +32,13 @@ struct MainScreen: View {
                    NotificationScreen(notificationPath: $notificationPath)
                }
                .tabItem { Label("Notification", systemImage: "bell") }
-               .badge("!")
+               
+               // Messages tab
+               NavigationStack(path: $messagePath) {
+                   MessageScreen(messagePath: $messagePath)
+               }
+               .tabItem { Label("Message", systemImage: "message") }
+               .badge("24")
            }
            .environmentObject(appNavigator)
        }
