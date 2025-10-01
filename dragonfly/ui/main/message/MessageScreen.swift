@@ -15,12 +15,13 @@ struct MessageScreen: View {
         NavigationStack(path: $messagePath) {
             List(products) { product in
                 MessageRow(product: product) { productId in
-                    messagePath.append(Route.product(productId))
+                    messagePath.append(Route.product(String(product.productId)))
                 }
                 .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
             }
-            .listStyle(.plain) // removes extra padding & separators like grouped style
+            .listStyle(.plain)
             .scrollContentBackground(.hidden)
+            .navigationTitle("Messages")
             .navigationDestination(for: Route.self) { route in
                 switch route {
                 case .product(let productId):
@@ -29,9 +30,8 @@ struct MessageScreen: View {
                     EmptyView()
                 }
             }
-            .navigationTitle("Messages")
+            .navigationSubtitle("3 unread messages")
             .navigationBarTitleDisplayMode(.large)
-            .toolbarBackground(.ultraThinMaterial, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
         }
     }

@@ -27,11 +27,13 @@ struct ProductRowView: View {
                 .placeholder {
                     Rectangle()
                         .fill(Color.gray.opacity(0.3))
-                        .frame(width: .infinity, height: imageHeight)
+                        .frame(height: imageHeight)
+                        .frame(maxWidth: .infinity)
                 }
                 .cacheOriginalImage()
                 .scaledToFill()
-                .frame(width: .infinity, height: imageHeight)
+                .frame(height: imageHeight)
+                .frame(maxWidth: .infinity)
                 .clipped()
          
             VStack(alignment: .leading, spacing: AppShape.medium.radius) {
@@ -58,6 +60,7 @@ struct ProductRowView_Previews: PreviewProvider {
     static var previews: some View {
         let sampleProduct = ProductData(
             id: 1,
+            productId: "121211121",
             title: "Sample Product",
             productDescription: "This is a preview of the product description. Shows text wrapping and layout.",
             price: 99.99,

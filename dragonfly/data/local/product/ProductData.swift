@@ -6,11 +6,13 @@
 //
 
 import SwiftData
+import Foundation
 
 @Model
 final class ProductData {
     
     @Attribute(.unique) var id: Int
+    var productId: String
     var title: String
     var productDescription: String
     var price: Double
@@ -24,6 +26,7 @@ final class ProductData {
     
     init(
         id: Int,
+        productId: String,
         title: String,
         productDescription: String,
         price: Double,
@@ -36,6 +39,7 @@ final class ProductData {
         images: [String]? = nil
     ) {
         self.id = id
+        self.productId = productId
         self.title = title
         self.productDescription = productDescription
         self.price = price
@@ -54,6 +58,7 @@ extension ProductData {
     func toDomain() -> ProductData {
         ProductData(
             id: id,
+            productId: productId,
             title: title,
             productDescription: productDescription,
             price: price,
@@ -70,6 +75,7 @@ extension ProductData {
     convenience init(from product: ProductEntity) {
         self.init(
             id: product.id,
+            productId: String(product.id),
             title: product.title,
             productDescription: product.description,
             price: product.price,
@@ -84,6 +90,7 @@ extension ProductData {
     }
     
     func update(from product: ProductEntity) {
+        productId = String(product.id)
            title = product.title
            productDescription = product.description
            price = product.price
@@ -104,6 +111,7 @@ extension ProductData {
     static let sampleProducts: [ProductData] = [
         ProductData(
             id: 1,
+            productId: "123",
             title: "iPhone 15",
             productDescription: "Apple's latest smartphone with A17 chip",
             price: 1099,
@@ -117,6 +125,7 @@ extension ProductData {
         ),
         ProductData(
             id: 2,
+            productId: "234",
             title: "MacBook Pro 16",
             productDescription: "High performance laptop with M2 Max chip",
             price: 3499,
@@ -130,6 +139,7 @@ extension ProductData {
         ),
         ProductData(
             id: 3,
+            productId: "22323",
             title: "AirPods Pro",
             productDescription: "Noise-cancelling earbuds with spatial audio",
             price: 249,

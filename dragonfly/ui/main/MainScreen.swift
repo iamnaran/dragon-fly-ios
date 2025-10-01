@@ -21,6 +21,13 @@ struct MainScreen: View {
                .tabItem { Label("Home", systemImage: "house") }
                .badge(2)
 
+               // Messages tab
+               NavigationStack(path: $messagePath) {
+                   MessageScreen(messagePath: $messagePath)
+               }
+               .tabItem { Label("Message", systemImage: "message") }
+               .badge("9")
+               
                // Profile tab
                NavigationStack(path: $profilePath) {
                    ProfileScreen(profilePath: $profilePath)
@@ -28,17 +35,11 @@ struct MainScreen: View {
                .tabItem { Label("Profile", systemImage: "person") }
 
                // Notification tab
-               NavigationStack(path: $notificationPath) {
-                   NotificationScreen(notificationPath: $notificationPath)
-               }
-               .tabItem { Label("Notification", systemImage: "bell") }
-               
-               // Messages tab
-               NavigationStack(path: $messagePath) {
-                   MessageScreen(messagePath: $messagePath)
-               }
-               .tabItem { Label("Message", systemImage: "message") }
-               .badge("24")
+//               NavigationStack(path: $notificationPath) {
+//                   NotificationScreen(notificationPath: $notificationPath)
+//               }
+//               .tabItem { Label("Notification", systemImage: "bell") }
+                             
            }
            .environmentObject(appNavigator)
        }

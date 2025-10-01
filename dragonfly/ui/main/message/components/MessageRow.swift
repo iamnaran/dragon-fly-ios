@@ -10,7 +10,7 @@ import Kingfisher
 
 struct MessageRow: View {
     let product: ProductData
-    let onItemClick: (String) -> Void
+    let onItemClick: (ProductData) -> Void
     
     var body: some View {
         HStack(spacing: 12) {
@@ -46,12 +46,12 @@ struct MessageRow: View {
             
                 .padding(AppShape.medium.radius)
                 .onTapGesture {
-                    onItemClick(product.title)
+                    onItemClick(product)
                 }
         }
         .contentShape(Rectangle())
         .onTapGesture {
-            onItemClick(product.title)
+            onItemClick(product)
         }
     }
     
@@ -60,6 +60,7 @@ struct MessageRow: View {
         static var previews: some View {
             let sampleProduct = ProductData(
                 id: 1,
+                productId: "1232323",
                 title: "Sample Product",
                 productDescription: "This is a preview of the product description. Shows text wrapping and layout.",
                 price: 99.99,
