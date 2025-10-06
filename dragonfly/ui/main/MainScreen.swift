@@ -4,46 +4,32 @@ struct MainScreen: View {
     
     @StateObject private var viewModel = MainViewModel()
     @EnvironmentObject private var appNavigator: AppNavigator
-
-    @State private var homePath = NavigationPath()
-    @State private var profilePath = NavigationPath()
-    @State private var notificationPath = NavigationPath()
     
-    @State private var messagePath = NavigationPath()
-
-
     var body: some View {
-           TabView {
-               // Home tab
-               NavigationStack(path: $homePath) {
-                   HomeScreen(homePath: $homePath)
-               }
-               .tabItem { Label("Home", systemImage: "house") }
-               .badge(2)
-
-               // Messages tab
-               NavigationStack(path: $messagePath) {
-                   MessageScreen(messagePath: $messagePath)
-               }
-               .tabItem { Label("Message", systemImage: "message") }
-               .badge("9")
-               
-               // Profile tab
-               NavigationStack(path: $profilePath) {
-                   ProfileScreen(profilePath: $profilePath)
-               }
-               .tabItem { Label("Profile", systemImage: "person") }
-
-               // Notification tab
-//               NavigationStack(path: $notificationPath) {
-//                   NotificationScreen(notificationPath: $notificationPath)
-//               }
-//               .tabItem { Label("Notification", systemImage: "bell") }
-                             
-           }
-           .environmentObject(appNavigator)
-       }
+        
+        TabView {
+            NavigationStack(path: $appNavigator.homePath){
+                HomeScreen()
+            }
+            .tabItem { Label("Home", systemImage: "house") }
+            .badge(2)
+            
+            MessageScreen()
+                .tabItem { Label("Message", systemImage: "message") }
+                .badge("9")
+            
+            ProfileScreen()
+                .tabItem { Label("Profile", systemImage: "person") }
+            
+        }
+        .environmentObject(appNavigator)
+        
+    }
+    
 }
+
+
+
 
 #Preview {
     MainScreen()

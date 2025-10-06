@@ -20,11 +20,6 @@ struct ChatRightRow: View {
                 .foregroundColor(.white)
                 .clipShape(RoundedRectangle(cornerRadius: 16))
                 .frame(maxWidth: 250, alignment: .trailing)
-            
-            // Future: profile image (if you want self-avatar)
-            Circle()
-                .fill(Color.blue.opacity(0.8))
-                .frame(width: 32, height: 32)
         }
         .padding(.horizontal, 4)
     }

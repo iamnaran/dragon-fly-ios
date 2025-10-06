@@ -11,10 +11,9 @@ import SwiftData
 @main
 struct dragonflyApp: App {
     
-    // Static lazy container (created only once, on demand)
     static let container: ModelContainer = {
         do {
-            let schema = Schema([ProductData.self])
+            let schema = Schema([ProductData.self, MessageData.self])
             return try ModelContainer(
                 for: schema,
                 configurations: [

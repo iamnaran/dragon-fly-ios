@@ -9,7 +9,6 @@ import SwiftUI
 import _SwiftData_SwiftUI
 
 struct HomeScreen: View {
-    @Binding var homePath: NavigationPath
     @EnvironmentObject private var appNavigator: AppNavigator
     
     @Environment(\.modelContext) private var modelContext
@@ -17,10 +16,10 @@ struct HomeScreen: View {
     @Query private var products: [ProductData]
 
     var body: some View {
-        NavigationStack(path: $homePath) {
+        NavigationStack(path: $appNavigator.homePath) {
             List(products) { product in
-                ProductRowView(product: product) { productId in
-                    homePath.append(Route.product(productId))
+                ProductRowView(product: product) { productId in                    appNavigator.navigateToProduct(productId)
+                    
                 }
                 .listRowBackground(
                     RoundedRectangle(cornerRadius: 20)
@@ -35,7 +34,7 @@ struct HomeScreen: View {
             .navigationDestination(for: Route.self) { route in
                 switch route {
                 case .product(let productId):
-                    ProductScreen(productId: productId)
+                    ProductScreen(productId: productId).toolbar(.hidden, for: .tabBar)
                 default:
                     EmptyView()
                 }

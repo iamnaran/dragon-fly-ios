@@ -10,7 +10,6 @@ import Foundation
 import SwiftUI
 
 struct NotificationScreen: View {
-    @Binding var notificationPath: NavigationPath
     
     @ObservedObject private var viewModel = NotificationViewModel()
 
