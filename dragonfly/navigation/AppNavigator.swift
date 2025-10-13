@@ -7,14 +7,28 @@ enum Route: Hashable {
     case login
     case main
     case product(String)
+    case message(productId: String, productTitle: String)
+}
+
+enum Tab {
+      case home
+      case message
+      case profile
+      case main
 }
 
 class AppNavigator: ObservableObject {
     
     @Published var routes: [Route] = []
-
+    
+    @Published var mainPath = NavigationPath()
+    @Published var homePath = NavigationPath()
+    @Published var profilePath = NavigationPath()
+    @Published var notificationPath = NavigationPath()
+    @Published var messagePath = NavigationPath()
+    
     let appStorage = AppStorageManager.shared
-
+    
     var isLoggedIn: Bool {
         appStorage.isUserLoggedIn
     }
@@ -22,7 +36,8 @@ class AppNavigator: ObservableObject {
     var isOnBoardCompleted: Bool {
         appStorage.isOnBoarded
     }
-
+    
+    
     // MARK: - Root screen decides login/main
     @ViewBuilder
     func rootScreen() -> some View {
@@ -32,22 +47,54 @@ class AppNavigator: ObservableObject {
             LoginScreen()
         }
     }
-
-    // MARK: - Programmatic navigation inside tabs
+    
+    // MARK: - Navigate to Product Details Screen
     func navigateToProduct(_ productId: String) {
-        // This method can be called from HomeScreen's NavigationStack
-        routes.append(.product(productId))
+          // Navigate within Home tab
+          homePath.append(Route.product(productId))
     }
     
-    func navigateTo(route: Route) {
-        routes.append(route)
+    // MARK: - Navigate to Chat Screen
+    func navigateToMessage(_ productId: String, productTitle: String) {
+          // Navigate within Message tab
+          messagePath.append(Route.message(productId: productId, productTitle: productTitle))
     }
-
-    func navigateUp() {
-        guard !routes.isEmpty else { return }
-        routes.removeLast()
-    }
-
+    
+    func navigateTo(route: Route, in tab: Tab = .main) {
+           switch tab {
+           case .home:
+               homePath.append(route)
+           case .message:
+               messagePath.append(route)
+           case .profile:
+               profilePath.append(route)
+           case .main:
+               mainPath.append(route)
+           }
+       }
+    
+    func navigateUp(in tab: Tab = .main) {
+         switch tab {
+         case .home:
+             if !homePath.isEmpty { homePath.removeLast() }
+         case .message:
+             if !messagePath.isEmpty { messagePath.removeLast() }
+         case .profile:
+             if !profilePath.isEmpty { profilePath.removeLast() }
+         case .main:
+             if !mainPath.isEmpty { mainPath.removeLast() }
+         }
+     }
+     
+    func popToRoot(in tab: Tab = .main) {
+         switch tab {
+         case .home: homePath = NavigationPath()
+         case .message: messagePath = NavigationPath()
+         case .profile: profilePath = NavigationPath()
+         case .main: mainPath = NavigationPath()
+         }
+     }
+    
     func popToRoot() {
         routes.removeAll()
     }

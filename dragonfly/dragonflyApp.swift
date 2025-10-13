@@ -11,27 +11,23 @@ import SwiftData
 @main
 struct dragonflyApp: App {
     
-    let container: ModelContainer
-
-    
-    init() {
+    static let container: ModelContainer = {
         do {
-            let schema = Schema([ProductData.self])
-            
-            container = try ModelContainer(
+            let schema = Schema([ProductData.self, MessageData.self])
+            return try ModelContainer(
                 for: schema,
-                configurations: []
+                configurations: [
+                    ModelConfiguration(isStoredInMemoryOnly: false, allowsSave: true)
+                ]
             )
-            
         } catch {
             fatalError("Failed to initialize ModelContainer: \(error)")
         }
-    }
-    
+    }()
     
     var body: some Scene {
         WindowGroup {
-            RootContainer()
-        }.modelContainer(container)
+            RootContainer().modelContainer(dragonflyApp.container)
+        }
     }
 }

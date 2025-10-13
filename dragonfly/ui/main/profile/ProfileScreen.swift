@@ -11,8 +11,6 @@ import Kingfisher
 
 struct ProfileScreen: View {
     
-    @Binding var profilePath: NavigationPath
-
     @ObservedObject private var viewModel = ProfileViewModel()
     @EnvironmentObject var navigator: AppNavigator
     
